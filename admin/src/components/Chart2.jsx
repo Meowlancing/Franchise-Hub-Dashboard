@@ -13,11 +13,11 @@ const data = [
 ];
 
 
-function Chart2() {
+function Chart2({aspect,title}) {
   return (
     <div className='chart2'>
-    <div className='title'>Last 6 months Revenue</div>
-      <ResponsiveContainer width="100%" aspect={2 / 1}>
+    <div className='title'>{title}</div>
+      <ResponsiveContainer width="100%" aspect={aspect}>
       <AreaChart width={730} height={250} data={data}
   margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
   <defs>
