@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar"
 import Navbar from "../components/Navbar"
 function New() {
   return (
-    <div classNmae='new'>
+    <div className='new'>
     <SideBar/>
       <div className='newContainer'>
         <Navbar/>
