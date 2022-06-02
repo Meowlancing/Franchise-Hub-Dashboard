@@ -18,6 +18,7 @@ export default function DataTable() {
           <div className='viewButton'>View</div>
           </Link>
           <div className='deleteButton' onClick={()=>handleDelete(params.row.id)}>Delete</div>
+          <div className='approveButton'>Approve</div>
         </div>
       )
     }}

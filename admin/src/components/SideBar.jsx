@@ -16,13 +16,13 @@ function SideBar() {
             <ul>
                <p className='title'>Website Content</p>
                <Link to="/" style={{textDecoration:"none"}}><li><Dashboard className='icon'/><span>DashBoard</span></li></Link>
-               <li><OndemandVideo className='icon'/><span>Trending Videos</span></li> 
+               
                <Link to="/products" style={{textDecoration:"none"}}>  <li><StarBorderPurple500 className='icon'/><span>Top Franchise Opportunities</span></li></Link>
                <Link to="/users" style={{textDecoration:"none"}}><li><OndemandVideo className='icon'/><span>All Franchise </span></li></Link>
                <p className='title'>FORMS</p>
-               <li><HowToReg className='icon'/><span>Franchisor Registration</span></li>
+               <Link to="/users/new" style={{textDecoration:"none"}}><li><HowToReg className='icon'/><span>Franchisor Registration</span></li></Link>
                <li><Newspaper className='icon'/><span>Newsletter Subscribers</span></li>
-               <li><Lightbulb className='icon'/><span>Free Advice</span></li>
+               
                <p className='title'>ADMIN ACCESS</p>
                <Link to="/users/userId" style={{textDecoration:"none"}}><li><Person className='icon'/><span>Profile</span></li></Link>
                <li><AccessibilityNew className='icon'/><span>Change Access</span></li>

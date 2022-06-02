@@ -15,14 +15,6 @@ function Navbar() {
              <FullscreenExitOutlined className='icon'/>
            </div>
            <div className='item'>
-             <NotificationsNoneOutlined className='icon'/>
-             <div className='counter'>1</div>
-           </div>
-           <div className='item'>
-             <ChatBubbleOutlined className='icon'/>
-             <div className='counter'>2</div>
-           </div>
-           <div className='item'>
              <ListAltOutlined className='icon'/>
            </div>
            <div className='item'>

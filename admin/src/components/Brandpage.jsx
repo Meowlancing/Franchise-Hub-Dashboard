@@ -1,44 +1,17 @@
-import React from 'react'
-import "./styles/single.scss"
-import SideBar from "../components/SideBar"
-import { useState } from "react";
-import "../components/styles/Brandpage.css"
+import React, { useState } from "react";
+import "./styles/Brandpage.css";
 import { Card, Row, Col, Navbar, Nav, Button } from "react-bootstrap";
-import TableMain from "../components/TableMain"
-function Single(props) {
+
+function BrandPage(props) {
   let [count, setCount] = useState(0);
   function handleLike() {
     setCount(count++);
   }
+
   return (
-    <div className='single'>
-      <SideBar/>
-      <div className='singleContainer'>
-        <Navbar/>
-        <div className='top'>
-          <div className='left'>
-            <div className='item'>
-              {/* <img src='https://phantom-marca.unidadeditorial.es/552514302ed2f0578b5ad5bff5b5ade0/resize/1320/f/jpg/assets/multimedia/imagenes/2022/03/13/16471637135445.jpg' className='itemImg'/>
-              <div className='details'>
-                <h1 className='itemTitle'>Kobe Bryant</h1>
-                <div className='detailItem'>
-                  <span className='itemKey'>Email:</span>
-                  <span className='itemValue'>kobe@gmail.com</span>
-                </div>
-                <div className='detailItem'>
-                  <span className='itemKey'>Phone:</span>
-                  <span className='itemValue'>+1 2345 67 89</span>
-                </div>
-                <div className='detailItem'>
-                  <span className='itemKey'>Address:</span>
-                  <span className='itemValue'>MARS</span>
-                </div>
-                <div className='detailItem'>
-                  <span className='itemKey'>Country:</span>
-                  <span className='itemValue'>Country</span>
-                </div>
-              </div> */}
-              <div className="head">
+    <div>
+    
+      <div className="head">
         <Row>
           <Col xs="3">
             <Card style={{ width: "15rem" }}>
@@ -68,7 +41,20 @@ function Single(props) {
                     </Nav.Link>
                   </Nav>
                 </Navbar>
-                <Row style={{textAlign:"center"}}>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </div>
+
+      <div className="Brandrow bdy-spc Brandlanding">
+        <div className="Brandcontainer">
+          <div className="Brandrow">
+            <div className="col-xs-12 col-sm-12 col-md-12">
+              <div className="tab-content" id="bdy-height">
+                <Card>
+                  <Card.Body>
+                    <Row style={{textAlign:"center"}}>
                       <Col>
                         Area Req
                         <h4>154-450 Sq.ft</h4>
@@ -82,19 +68,8 @@ function Single(props) {
                         <h4>Less than 10</h4>
                       </Col>
                     </Row>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-
-
-
-      <div className="Brandrow bdy-spc Brandlanding">
-        <div className="Brandcontainer">
-          <div className="Brandrow">
-            <div className="col-xs-12 col-sm-12 col-md-12">
-              <div className="tab-content" id="bdy-height">
+                  </Card.Body>
+                </Card>
 
                 <div id="business_tab" className="tab-section">
                   <div className="tab-sec-ttl">Business Details</div>
@@ -269,18 +244,8 @@ function Single(props) {
           <span>{count}</span>
         </div>
       </div>
-
-      
-            </div>
-          </div>
-        </div>
-        <div className='bottom'>
-        <h1 className='title'>Latest Investors</h1>
-          <TableMain/>
-        </div>
-      </div>
     </div>
-  )
+  );
 }
 
-export default Single
+export default BrandPage;

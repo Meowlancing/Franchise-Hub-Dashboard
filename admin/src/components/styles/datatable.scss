@@ -67,5 +67,12 @@
             border: 1px dotted rgba(220, 20, 60, 0.6);
             cursor: pointer;
         }
+        .approveButton{
+            padding: 2px 5px;
+            border-radius: 5px;
+            color: green;
+            background-color: rgba(0,128,0,0.15);
+            cursor: pointer;
+        }
     }
 }
