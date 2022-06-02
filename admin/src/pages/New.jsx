@@ -2,6 +2,7 @@ import React from 'react'
 import "./styles/new.scss"
 import SideBar from "../components/SideBar"
 import Navbar from "../components/Navbar"
+import { DriveFolderUploadOutlined } from '@mui/icons-material'
 function New() {
   return (
     <div className='new'>
@@ -9,7 +10,7 @@ function New() {
       <div className='newContainer'>
         <Navbar/>
         <div className='top'>
-          <h1>Add new user</h1>
+          <h1>Add new investor</h1>
         </div>
         <div className='bottom'>
           <div className='left'>
@@ -17,6 +18,10 @@ function New() {
           </div>
           <div className='right'>
             <form>
+            <div className='formInput'>
+                <label htmlFor='file'>Image:<DriveFolderUploadOutlined className='icon'/></label>
+                <input type='file' id='file' style={{display:"none"}}/>
+              </div>
               <div className='formInput'>
                 <label>Username</label>
                 <input type='text' placeholder='sc_30' />
