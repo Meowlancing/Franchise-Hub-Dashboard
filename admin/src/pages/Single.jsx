@@ -57,17 +57,6 @@ function Single(props) {
             <h3>Brand</h3>
             <Card>
               <Card.Body>
-                <Navbar expand="lg">
-                  <Nav className="me-auto">
-                    <Nav.Link href="#bdy-height">Business</Nav.Link>
-                    <Nav.Link href="#investment_tab">Investment</Nav.Link>
-                    <Nav.Link href="#property_id">Property</Nav.Link>
-                    <Nav.Link href="#training_tab">Training</Nav.Link>
-                    <Nav.Link href="#others_tab">
-                      Agreement & Terms Details
-                    </Nav.Link>
-                  </Nav>
-                </Navbar>
                 <Row style={{textAlign:"center"}}>
                       <Col>
                         Area Req
