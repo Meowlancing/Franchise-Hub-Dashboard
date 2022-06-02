@@ -4,7 +4,7 @@ body{
 }
 body{
     overflow-x: hidden;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 #root{
     background-color: var(--bg-color);

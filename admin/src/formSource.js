@@ -41,3 +41,36 @@ export const userInputs = [
     placeholder:"USA"
 },
 ];
+
+export const productInputs = [
+    {
+        id:"1",
+        label:"Title",
+        type:"text",
+        placeholder:"Apple",
+    },
+    {
+        id:"2",
+        label:"Description",
+        type:"text",
+        placeholder:"Desc.",
+    },
+    {
+        id:"3",
+        label:"Category",
+        type:"text",
+        placeholder:"Computers",
+    },
+    {
+        id:"4",
+        label:"Price",
+        type:"text",
+        placeholder:"100",
+    },
+    {
+        id:"5",
+        label:"Stock",
+        type:"text",
+        placeholder:"In stock",
+    },
+];
