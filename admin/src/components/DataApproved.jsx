@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { userColumns , userRows } from '../DataTableSource';
 
-export default function DataTable() {
+export default function DataApproved() {
   const [data,setData]=useState(userRows)
 
   const handleDelete = (id)=>{
@@ -14,23 +14,17 @@ export default function DataTable() {
     {field:"action", headerName:"Action",width:200, renderCell:(params)=>{
       return(
         <div className='cellAction'>
-          <Link to="/users/test" style={{textDecoration:"none"}}>
+          <Link to="/users/new" style={{textDecoration:"none"}}>
           <div className='viewButton'>View</div>
           </Link>
           <div className='deleteButton' onClick={()=>handleDelete(params.row.id)}>Delete</div>
-          <div className='approveButton'>Approve</div>
+          <div className='approveButton'>Approved</div>
         </div>
       )
     }}
   ]
   return (
     <div className='datatable'>
-    <div className='datatableTitle'>
-      Franchisee List
-      <Link to="/users/new" className='link'>
-        View Franchisee
-      </Link>
-    </div>
       <DataGrid
         rows={data}
         columns={userColumns.concat(actionColumn)}

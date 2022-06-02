@@ -25,12 +25,6 @@ export default function DataTable() {
   ]
   return (
     <div className='datatable'>
-    <div className='datatableTitle'>
-      Franchisee List
-      <Link to="/users/new" className='link'>
-        View Franchisee
-      </Link>
-    </div>
       <DataGrid
         rows={data}
         columns={userColumns.concat(actionColumn)}

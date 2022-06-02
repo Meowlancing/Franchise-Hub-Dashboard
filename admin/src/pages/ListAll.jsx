@@ -3,17 +3,16 @@ import "./styles/list.scss"
 import SideBar from "../components/SideBar"
 import Navbar from "../components/Navbar"
 import DataTable1 from '../components/DataTable1'
-import DataApproved from '../components/DataApproved'
-function ListApproved() {
+function ListAll() {
   return (
     <div className='list'>
       <SideBar/>
       <div className='listContainer'>
         <Navbar/>
-        <DataApproved/>
+        <DataTable1/>
       </div>
     </div>
   )
 }
 
-export default ListApproved
+export default ListAll
