@@ -1,7 +1,6 @@
 import React from 'react'
 import "./styles/home.scss";
 import SideBar from "../components/SideBar"
-import Navbar from '../components/Navbar';
 import TableMain from '../components/TableMain';
 
 const Home = () => {
@@ -9,7 +8,6 @@ const Home = () => {
     <div className='home'>
         <SideBar/>
         <div className='homeContainer'>
-          <Navbar/>
            <div className='charts'>
            </div>
            <div className='listContainer'>
