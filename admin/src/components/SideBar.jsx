@@ -26,7 +26,7 @@ function SideBar() {
                <p className='title'>ADMIN ACCESS</p>
                {/* <Link to="/users/userId" style={{textDecoration:"none"}}><li><Person className='icon'/><span>Profile</span></li></Link> */}
                <Link to="/users/access" style={{textDecoration:"none"}}><li><AccessibilityNew className='icon'/><span>Change UserName</span></li></Link>
-               <Link to="/users/access" style={{textDecoration:"none"}}><li><VisibilityOff className='icon'/><span>Free Advice</span></li></Link>
+               <Link to="/users/access" style={{textDecoration:"none"}}><li><VisibilityOff className='icon'/><span>Change Password</span></li></Link>
                <p className='title'>User</p><li><Logout className='icon'/><span>LogOut</span></li>
             </ul>
         </div>

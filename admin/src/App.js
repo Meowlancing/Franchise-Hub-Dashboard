@@ -5,6 +5,7 @@ import List from './pages/List';
 import Login from './pages/Login';
 import BrandPage from './pages/BrandPage';
 import Registration from './components/RegForm';
+import VideoSection from './components/VideoSection';
 
 
 
@@ -13,7 +14,7 @@ function App() {
     <div className='app'>
      <Routes>
        <Route path='/' element={<Home/>} />
-       <Route path='/videos/' element={<BrandPage/>} />
+       <Route path='/videos/' element={<VideoSection/>} />
        <Route path='/events/' element={<BrandPage/>} />
        <Route path='/newsletter/' element={<BrandPage/>} />
        <Route path='/free/' element={<BrandPage/>} />
