@@ -2,8 +2,6 @@ import React from 'react'
 import "./styles/home.scss";
 import SideBar from "../components/SideBar"
 import Navbar from '../components/Navbar';
-import { FeaturedChart } from '../components/FeaturedChart';
-import Chart2 from '../components/Chart2';
 import TableMain from '../components/TableMain';
 
 const Home = () => {
@@ -13,8 +11,6 @@ const Home = () => {
         <div className='homeContainer'>
           <Navbar/>
            <div className='charts'>
-             <FeaturedChart/>
-             <Chart2 title="Total Investments" aspect={2 / 1}/>
            </div>
            <div className='listContainer'>
              <div className='listTitle'>Latest Transactions</div>
