@@ -17,7 +17,7 @@ function SideBar() {
                <p className='title'>Website Content</p>
                <Link to="/" style={{textDecoration:"none"}}><li><Dashboard className='icon'/><span>DashBoard</span></li></Link>
                
-               <Link to="/products" style={{textDecoration:"none"}}>  <li><StarBorderPurple500 className='icon'/><span>Top Franchise Opportunities</span></li></Link>
+               <Link to="/users" style={{textDecoration:"none"}}>  <li><StarBorderPurple500 className='icon'/><span>Top Franchise Opportunities</span></li></Link>
                <Link to="/users" style={{textDecoration:"none"}}><li><OndemandVideo className='icon'/><span>All Franchise </span></li></Link>
                <p className='title'>FORMS</p>
                <Link to="/users/new" style={{textDecoration:"none"}}><li><HowToReg className='icon'/><span>Franchisor Registration</span></li></Link>
