@@ -20,7 +20,7 @@ function SideBar() {
                <Link to="/users" style={{textDecoration:"none"}}>  <li><StarBorderPurple500 className='icon'/><span>Top Franchise Opportunities</span></li></Link>
                <Link to="/users" style={{textDecoration:"none"}}><li><OndemandVideo className='icon'/><span>All Franchise </span></li></Link>
                <p className='title'>FORMS</p>
-               <Link to="/users/new" style={{textDecoration:"none"}}><li><HowToReg className='icon'/><span>Franchisor Registration</span></li></Link>
+               <Link to="/users/franchisor-reg" style={{textDecoration:"none"}}><li><HowToReg className='icon'/><span>Franchisor Registration</span></li></Link>
                <li><Newspaper className='icon'/><span>Newsletter Subscribers</span></li>
                
                <p className='title'>ADMIN ACCESS</p>

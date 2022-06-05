@@ -9,15 +9,18 @@ import BrandPage from './pages/BrandPage';
 
 function App() {
   return (
-    <div className='app dark'>
+    <div className='app'>
      <Routes>
        <Route path='/' element={<Home/>} />
        
-       <Route path='/Login/' element={<Login/>} />
+       <Route path='/login/' element={<Login/>} />
        <Route path='/videos/' element={<Login/>} />
        <Route path='/events/' element={<Login/>} />
+       <Route path='/events/' element={<Login/>} />
+
        <Route path='users'>
          <Route index element={<List/>}/>
+         <Route path=':franchisor-reg' element={<BrandPage/>}/>
          <Route path=':userId' element={<BrandPage/>}/>
        </Route>
      </Routes>
