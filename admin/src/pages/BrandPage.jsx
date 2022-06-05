@@ -5,7 +5,7 @@ import { useState } from "react";
 import "../components/styles/Brandpage.css"
 import { Card, Row, Col, Navbar, Nav, Button } from "react-bootstrap";
 import TableMain from "../components/TableMain"
-function Single(props) {
+function BrandPage(props) {
   let [count, setCount] = useState(0);
   function handleLike() {
     setCount(count++);
@@ -272,4 +272,4 @@ function Single(props) {
   )
 }
 
-export default Single
+export default BrandPage
