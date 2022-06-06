@@ -3,6 +3,13 @@ img{
     width: 40vw;
     margin: 10vh 0;
 }
+.header{
+    position: absolute;
+    left: 55vw;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10vh;
+}
 .container{
     display: flex;
 }
@@ -87,7 +94,7 @@ img{
     }
     .right .btn-block, .formGroup{
         position: fixed;
-        top: 2vh;
+        top: 12vh;
         left: 40vw;
     }
     .btn-block{
@@ -113,6 +120,7 @@ img{
         left: 10vw;
     }
     .right{
+        margin-top: 10vh;
         margin-left: 40vw;
     }
     .formGroup{
@@ -121,7 +129,7 @@ img{
     }
     .right .btn-block, .formGroup{
         position: fixed;
-        top: 2vh;
+        top: 10vh;
         left: 40vw;
     }
     .btn-block{
