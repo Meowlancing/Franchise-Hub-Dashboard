@@ -1,19 +1,3 @@
-// import React from 'react'
-// import {Upload} from 'antd';
-// import "antd/dist/antd.css";
-
-// const Events = () => {
-//   return (
-//     <div style={{display:"flex", justifyContent:"center", alignItems:"center", height:"100vh"}}>
-//         <Upload action={"http://localhost:3000/"}>
-//             <p>Drag Files</p>
-//         </Upload>
-//     </div>
-//   )
-// }
-
-// export default Events
-
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import SideBar from "./SideBar";
@@ -51,7 +35,7 @@ const Events = () => {
           file.map((item, index) => {
             return (
               <div key={item}>
-                <img src={item} alt="" />
+                <img className="Img" src={item} alt="" />
                 <Button className="button" type="button" onClick={() => deleteFile(index)}>
                   delete
                 </Button>

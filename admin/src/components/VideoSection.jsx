@@ -41,6 +41,7 @@ function VideoSection() {
       render: (record) => {
         return (
           <>
+            
             <EditOutlined
               onClick={() => {
                 onEditStudent(record);
