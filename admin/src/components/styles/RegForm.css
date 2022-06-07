@@ -1,0 +1,9 @@
+.App{
+    display: flex;
+}
+.RightContainer{
+    flex: 4;
+}
+.LeftContainer{
+    flex: 2;
+}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Form, Card, Button, Row, Col, InputGroup } from "react-bootstrap";
 
-
 // creating functional component ans getting props from app.js and destucturing them
 const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
   //creating error state for validation
@@ -12,6 +11,33 @@ const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
 
     // checking if value of first name and last name is empty show error else take to next step
   };
+
+  const [radio1, setRadio1] = useState("");
+  const [radio2, setRadio2] = useState("");
+  const [radio3, setRadio3] = useState("");
+  const [radio4, setRadio4] = useState("");
+  const [radio5, setRadio5] = useState("");
+  function handleRadio1(e) {
+    const val = e.target.value;
+    setRadio1(val);
+  }
+  function handleRadio2(e) {
+    const val = e.target.value;
+    setRadio2(val);
+  }
+  function handleRadio3(e) {
+    const val = e.target.value;
+    setRadio3(val);
+  }
+  function handleRadio4(e) {
+    const val = e.target.value;
+    setRadio4(val);
+  }
+  function handleRadio5(e) {
+    const val = e.target.value;
+    setRadio5(val);
+  }
+
   return (
     <>
       <h1 style={{ color: "#333333", fontSize: "30px" }}>Training Details</h1>
@@ -32,8 +58,23 @@ const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
                     style={{ marginRight: "50px" }}
                     type="radio"
                     label="Yes"
+                    value="yes"
+                    checked={radio1 === "yes"}
+                    onClick={handleRadio1}
+                    onChange={handleFormData(
+                      "training_details.q_hv_det_op_man"
+                    )}
                   />
-                  <Form.Check type="radio" label="No" />
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    value="no"
+                    checked={radio1 === "no"}
+                    onClick={handleRadio1}
+                    onChange={handleFormData(
+                      "training_details.q_hv_det_op_man"
+                    )}
+                  />
                 </Col>
               </Row>
             </Form.Group>
@@ -47,7 +88,13 @@ const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
                 </Col>
                 <Col>
                   {" "}
-                  <Form.Control type="text" placeholder="Enter your req" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter your req"
+                    onChange={handleFormData(
+                      "training_details.whr_franch_training"
+                    )}
+                  />
                 </Col>
               </Row>
             </Form.Group>
@@ -64,8 +111,22 @@ const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
                     style={{ marginRight: "50px" }}
                     type="radio"
                     label="Yes"
+                    value="no"
+                    checked={radio2 === "yes"}
+                    onClick={handleRadio2}
+                    onChange={handleFormData(
+                      "training_details.q_field_assist_avail"
+                    )}
                   />
-                  <Form.Check type="radio" label="No" />
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    checked={radio2 === "no"}
+                    onClick={handleRadio2}
+                    onChange={handleFormData(
+                      "training_details.q_field_assist_avail"
+                    )}
+                  />
                 </Col>
               </Row>
             </Form.Group>
@@ -90,8 +151,21 @@ const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
                     style={{ marginRight: "50px" }}
                     type="radio"
                     label="Yes"
+                    checked={radio3 === "yes"}
+                    onClick={handleRadio3}
+                    onChange={handleFormData(
+                      "agreement_details.q_hv_std_franch_agr"
+                    )}
                   />
-                  <Form.Check type="radio" label="No" />
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    checked={radio3 === "no"}
+                    onClick={handleRadio3}
+                    onChange={handleFormData(
+                      "agreement_details.q_hv_std_franch_agr"
+                    )}
+                  />
                 </Col>
               </Row>
             </Form.Group>
@@ -108,17 +182,23 @@ const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
                         <Form.Check
                           type="radio"
                           name="franchise_term_duration"
-                          value="Life"
-                          label="Lifetime"
+                          value="Lifetime"
+                          label="lifetime"
+                          checked={radio4 === "lifetime"}
+                          onClick={handleRadio4}
+                          onChange={handleFormData(
+                            "agreement_details.duration_of_contr"
+                          )}
                         />{" "}
                       </Col>
                       <Col>
                         <label class="col-xs-1 col-sm-1 col-md-1 spcasepad">
-                          <input
+                          <Form.Check
                             type="radio"
                             name="franchise_term_duration"
-                            value="No of years"
-                            checked
+                            value="years"
+                            checked={radio4 === "years"}
+                            onClick={handleRadio4}
                           />
                         </label>
                         <div class="col-xs-3 col-sm-4 col-md-4 row-no-padding">
@@ -128,6 +208,9 @@ const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
                               class=""
                               id="term_year_franchise"
                               title="Term Years"
+                              onChange={handleFormData(
+                                "agreement_details.duration_of_contr"
+                              )}
                             >
                               <option value="1">1</option>
                               <option value="2">2</option>
@@ -166,8 +249,23 @@ const Agreements = ({ nextStep, handleFormData, prevStep, values }) => {
                     style={{ marginRight: "50px" }}
                     type="radio"
                     label="Yes"
+                    value="yes"
+                    checked={radio5 === "yes"}
+                    onClick={handleRadio5}
+                    onChange={handleFormData(
+                      "agreement_details.q_term_renewable"
+                    )}
                   />
-                  <Form.Check type="radio" label="No" />
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    value="no"
+                    checked={radio5 === "no"}
+                    onClick={handleRadio5}
+                    onChange={handleFormData(
+                      "agreement_details.q_term_renewable"
+                    )}
+                  />
                 </Col>
               </Row>
             </Form.Group>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import BrandPage from "../Brandpage";
 import validator from "validator";
+import axios from "axios";
 
 function Payments({ nextStep, handleFormData, prevStep, values }) {
   const [error, setError] = useState(false);
@@ -26,6 +27,30 @@ function Payments({ nextStep, handleFormData, prevStep, values }) {
       nextStep();
     }
   };
+ 
+  async function postData() {
+    try {
+      const response = await axios({
+        method: "post",
+        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/franchisor-registration/new",
+        data: {
+          metadata:{
+            is_read: false
+          },
+          content: values
+        },
+      });
+
+      console.log(response.data);
+      // return  response;
+    } catch (error) {
+      console.log("error");
+      return [];
+    }
+  }
+ 
+
+  
 
   return (
     <div>
@@ -65,7 +90,7 @@ function Payments({ nextStep, handleFormData, prevStep, values }) {
                     size="sm"
                     type="file"
                     defaultValue={values.logo}
-                    onChange={handleFormData("picture")}
+                    onChange={handleFormData("final_rites.company_logo")}
                   />
                   {error ? (
                     <Form.Text style={{ color: "red" }}>
@@ -89,7 +114,7 @@ function Payments({ nextStep, handleFormData, prevStep, values }) {
                     placeholder="Enter video link"
                     type="text"
                     defaultValue={values.video}
-                    onChange={handleFormData("video")}
+                    onChange={handleFormData("final_rites.video_link")}
                   />
                 </Col>
               </Row>
@@ -106,7 +131,7 @@ function Payments({ nextStep, handleFormData, prevStep, values }) {
                     placeholder="Enter your GST number"
                     type="text"
                     defaultValue={values.gst}
-                    onChange={handleFormData("gst")}
+                    onChange={handleFormData("final_rites.gst_no")}
                   />
                   {error ? (
                     <Form.Text style={{ color: "red" }}>
@@ -144,11 +169,12 @@ function Payments({ nextStep, handleFormData, prevStep, values }) {
                 type="checkbox"
                 label="Yes, I want to subscribe to the weekly Newsletter"
                 checked
+                onChange={handleFormData("final_rites.q_sub_news")}
               />
             </Form.Group>
 
             <div style={{ display: "flex", justifyContent: "space-around" }}>
-              <Button variant="outline-danger" type="submit">
+              <Button variant="outline-danger" type="submit" onClick={postData}>
                 Submit
               </Button>
             </div>

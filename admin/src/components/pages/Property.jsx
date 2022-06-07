@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Form, Card, Button, Row, Col, InputGroup } from "react-bootstrap";
+import Personal from "./Personal";
 
 // creating functional component ans getting props from app.js and destucturing them
 const Property = ({ nextStep, handleFormData, prevStep, values }) => {
   //creating error state for validation
- 
 
   // after form submit validating the form data using validator
   const submitFormData = (e) => {
@@ -12,6 +12,26 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
 
     // checking if value of first name and last name is empty show error else take to next step
   };
+  const [radio1, setRadio1] = useState("");
+  const [radio2, setRadio2] = useState("");
+  const [radio3, setRadio3] = useState("");
+  const [radio4, setRadio4] = useState("");
+  function handleRadio1(e) {
+    const val = e.target.value;
+    setRadio1(val);
+  }
+  function handleRadio2(e) {
+    const val = e.target.value;
+    setRadio2(val);
+  }
+  function handleRadio3(e) {
+    const val = e.target.value;
+    setRadio3(val);
+  }
+  function handleRadio4(e) {
+    const val = e.target.value;
+    setRadio4(val);
+  }
   return (
     <>
       <h1 style={{ color: "#333333", fontSize: "30px" }}>Franchise Details</h1>
@@ -32,8 +52,23 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                     style={{ marginRight: "50px" }}
                     type="radio"
                     label="Yes"
+                    value="yes"
+                    checked={radio1 === "yes"}
+                    onChange={handleFormData(
+                      "property_details.q_excl_terr_rights"
+                    )}
+                    onClick={handleRadio1}
                   />
-                  <Form.Check type="radio" label="No" />
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    value="no"
+                    checked={radio1 === "no"}
+                    onChange={handleFormData(
+                      "property_details.q_excl_terr_rights"
+                    )}
+                    onClick={handleRadio1}
+                  />
                 </Col>
               </Row>
             </Form.Group>
@@ -51,8 +86,23 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                     style={{ marginRight: "50px" }}
                     type="radio"
                     label="Yes"
+                    value="yes"
+                    checked={radio2 === "yes"}
+                    onClick={handleRadio2}
+                    onChange={handleFormData(
+                      "personal_details.q_perf_guarantees"
+                    )}
                   />
-                  <Form.Check type="radio" label="No" />
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    value="no"
+                    checked={radio2 === "no"}
+                    onClick={handleRadio2}
+                    onChange={handleFormData(
+                      "personal_details.q_perf_guarantees"
+                    )}
+                  />
                 </Col>
               </Row>
             </Form.Group>
@@ -70,8 +120,23 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                     style={{ marginRight: "50px" }}
                     type="radio"
                     label="Yes"
+                    value="yes"
+                    checked={radio3 === "yes"}
+                    onClick={handleRadio3}
+                    onChange={handleFormData(
+                      "personal_details.q_adv_market_levies"
+                    )}
                   />
-                  <Form.Check type="radio" label="No" />
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    value="no"
+                    checked={radio3 === "no"}
+                    onClick={handleRadio3}
+                    onChange={handleFormData(
+                      "personal_details.q_adv_market_levies"
+                    )}
+                  />
                 </Col>
               </Row>
             </Form.Group>
@@ -87,6 +152,7 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                   <Form.Control
                     type="text"
                     placeholder="Enter the value in %"
+                    onChange={handleFormData("personal_details.antc_perc_ret")}
                   />
                 </Col>
               </Row>
@@ -107,6 +173,9 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                         name="payback_period_min"
                         class="form-control myselectclass4 valid"
                         id="range_rate_min"
+                        onChange={handleFormData(
+                          "personal_details.likely_payback_period.min"
+                        )}
                       >
                         <option value="0">Min</option>
                         <option value="0" selected="">
@@ -131,6 +200,9 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                         name="payback_period_max"
                         class="form-control myselectclass4 valid"
                         id="range_rate_max"
+                        onChange={handleFormData(
+                          "personal_details.likely_payback_period.max"
+                        )}
                       >
                         <option value="0">Max</option>
                         <option value="0">0</option>
@@ -153,6 +225,9 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                         name="payback_period_type"
                         class="form-control myselectclass4 valid"
                         title="payback_period_type"
+                        onChange={handleFormData(
+                          "personal_details.likely_payback_period.month_yr"
+                        )}
                       >
                         <option value="Month" selected="">
                           Month
@@ -177,6 +252,7 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                   <Form.Control
                     type="text"
                     placeholder="Enter other investments requirements"
+                    onChange={handleFormData("personal_details.other_inv_req")}
                   />
                 </Col>
               </Row>
@@ -204,6 +280,9 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                         name="payback_period_min"
                         class="form-control"
                         id="range_rate_min"
+                        onChange={handleFormData(
+                          "property_details.typ_prop_req"
+                        )}
                       >
                         <option value="0"></option>
                         <option value="0" selected="">
@@ -235,6 +314,9 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                         minlength="2"
                         maxlength="5"
                         class="form-control blur"
+                        onChange={handleFormData(
+                          "property_details.floor_area_req.min"
+                        )}
                       />
                     </div>
                   </div>
@@ -248,6 +330,9 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                       minlength="3"
                       maxlength="6"
                       class="form-control blur"
+                      onChange={handleFormData(
+                        "property_details.floor_area_req.max"
+                      )}
                     />
                   </div>
 
@@ -272,6 +357,7 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                   <Form.Control
                     type="text"
                     placeholder="Enter Preffered location"
+                    onChange={handleFormData("property_details.pref_loc")}
                   />
                 </Col>
               </Row>
@@ -289,8 +375,23 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                     style={{ marginRight: "50px" }}
                     type="radio"
                     label="Yes"
+                    value="yes"
+                    checked={radio4 === "yes"}
+                    onClick={handleRadio4}
+                    onChange={handleFormData(
+                      "property_details.q_site_select_assist"
+                    )}
                   />
-                  <Form.Check type="radio" label="No" />
+                  <Form.Check
+                    type="radio"
+                    label="No"
+                    value="no"
+                    checked={radio4 === "no"}
+                    onClick={handleRadio4}
+                    onChange={handleFormData(
+                      "property_details.q_site_select_assist"
+                    )}
+                  />
                 </Col>
               </Row>
             </Form.Group>

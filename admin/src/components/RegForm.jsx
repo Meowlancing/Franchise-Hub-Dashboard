@@ -4,31 +4,69 @@ import Business from "./pages/Business";
 import Personal from "./pages/Personal";
 import Property from "./pages/Property";
 import Agreements from "./pages/Agreements";
-import Payments from "./pages/Payments"
-import SideBar from "./SideBar";
+import Payments from "./pages/Payments";
+import SideBar from "./SideBar"
+import "./styles/RegForm.css"
 
 function Registration() {
   const [step, setstep] = useState(1);
 
   //state for form data
   const [formData, setFormData] = useState({
-    email: "",
-    mobile: "",
-    brandName: "",
-    companyName: "",
-    ownerName: "",
-    ownerEmail: "",
-    ownerMobile: "",
-    address: "",
-    country: "",
-    state: "",
-    city: "",
-    pincode: "",
-    industry: "",
-    picture: "",
-    video:"",
-    gst:"",
-
+    personal_details: {
+      email_id: "",
+      mobile: "",
+      brand_name: "",
+      company_name: "",
+      owner_name: "",
+      owner_email: "",
+      owner_phone: "",
+      address_det: "",
+      country: "",
+      state: "",
+      city: "",
+      pincode: "",
+      industry: "",
+      no_of_franch_outlets: "",
+      inv: "",
+      business_desc: "",
+      q_excl_terr_rights: "",
+      q_perf_guarantees: "",
+      q_adv_market_levies: "",
+      antc_perc_ret: "",
+      likely_payback_period: {
+        min: "",
+        max: "",
+        month_yr: "",
+      },
+      other_inv_req: "",
+    },
+    property_details: {
+      typ_prop_req: "",
+      floor_area_req: {
+        min: "",
+        max: "",
+      },
+      pref_loc: "",
+      q_site_select_assist: "",
+    },
+    training_details: {
+      q_hv_det_op_man: "",
+      whr_franch_training: "",
+      q_field_assist_avail: "",
+    },
+    agreement_details: {
+      q_hv_std_franch_agr: "",
+      duration_of_contr: "",
+      q_term_renewable: "",
+    },
+    final_rites: {
+      company_logo: "",
+      video_link: "",
+      gst_no: "",
+      mode_of_payment: "",
+      q_sub_news: "",
+    },
   });
 
   // function for going to next step by increasing step state by 1
@@ -51,6 +89,7 @@ function Registration() {
       ...prevState,
       [input]: value,
     }));
+    console.log(value);
   };
 
   switch (step) {
@@ -58,19 +97,24 @@ function Registration() {
     case 1:
       return (
         <div className="App">
-          <Container>
+        <div className="LeftContainer"><SideBar/></div>
+         <div className="RightContainer">
+         <Container>
             <Personal
               nextStep={nextStep}
               handleFormData={handleInputData}
               values={formData}
             />
           </Container>
+          </div>
         </div>
       );
     // case 2 to show stepTwo form passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
     case 2:
       return (
         <div className="App">
+        <div className="LeftContainer"><SideBar/></div>
+        <div className="RightContainer">
           <Container>
             <Business
               nextStep={nextStep}
@@ -79,12 +123,15 @@ function Registration() {
               values={formData}
             />
           </Container>
+          </div>
         </div>
       );
-    // Only formData is passed as prop to show the final value at form submit
+   
     case 3:
       return (
         <div className="App">
+        <div className="LeftContainer"><SideBar/></div>
+        <div className="RightContainer">
           <Container>
             <Property
               nextStep={nextStep}
@@ -93,11 +140,14 @@ function Registration() {
               values={formData}
             />
           </Container>
+          </div>
         </div>
       );
     case 4:
       return (
         <div className="App">
+        <div className="LeftContainer"><SideBar/></div>
+        <div className="RightContainer">
           <Container>
             <Agreements
               nextStep={nextStep}
@@ -106,19 +156,24 @@ function Registration() {
               values={formData}
             />
           </Container>
+          </div>
         </div>
       );
     case 5:
       return (
         <div className="App">
+        <div className="LeftContainer"><SideBar/></div>
+        <div className="RightContainer">
           <Container>
             <Payments
               nextStep={nextStep}
               prevStep={prevStep}
               handleFormData={handleInputData}
               values={formData}
+              
             />
           </Container>
+          </div>
         </div>
       );
 

@@ -12,7 +12,7 @@ const Personal = ({ nextStep, handleFormData, values }) => {
     e.preventDefault();
 
     
-    if (validator.isEmpty(values.email)) {
+    if (validator.isEmpty(values.personal_details.email)) {
       setError(true);
     } else {
       nextStep();
@@ -28,16 +28,16 @@ const Personal = ({ nextStep, handleFormData, values }) => {
             <Form.Group className="mb-3">
               <Row>
                 <Col md="2">
-                  <Form.Label>Email Id (UserId)</Form.Label>
+                  <Form.Label>Email Id (UserId)*</Form.Label>
                 </Col>
                 <Col>
                   {" "}
                   <Form.Control
                     style={{ border: error ? "2px solid red" : "" }}
-                    defaultValue={values.email}
+                    defaultValue={values.personal_details.email}
                     type="email"
                     placeholder="Enter your UserId"
-                    onChange={handleFormData("email")}
+                    onChange={handleFormData("personal_details.email")}
                   />
                   {error ? (
                     <Form.Text style={{ color: "red" }}>
@@ -53,16 +53,16 @@ const Personal = ({ nextStep, handleFormData, values }) => {
             <Form.Group className="mb-3">
               <Row>
                 <Col  md="2" >
-                  <Form.Label>Mobile</Form.Label>
+                  <Form.Label>Mobile *</Form.Label>
                 </Col>
                 <Col>
                   {" "}
                   <Form.Control
                     style={{ border: error ? "2px solid red" : "" }}
-                    defaultValue={values.mobile}
+                    defaultValue={values.personal_details.mobile}
                     type="text"
                     placeholder="Enter your mobile number"
-                    onChange={handleFormData("mobile")}
+                    onChange={handleFormData("personal_details.mobile")}
                   />
                   {error ? (
                     <Form.Text style={{ color: "red" }}>
@@ -74,7 +74,7 @@ const Personal = ({ nextStep, handleFormData, values }) => {
                 </Col>
               </Row>
             </Form.Group>
-            <Button variant="outline-danger" type="submit">
+            <Button variant="outline-danger" type="submit" onClick={nextStep}>
               Next
             </Button>
           </Form>

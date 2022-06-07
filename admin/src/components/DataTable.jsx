@@ -27,8 +27,8 @@ export default function DataTable() {
     <div className='datatable'>
     <div className='datatableTitle'>
       Franchisee List
-      <Link to="/users/new" className='link'>
-        View Franchisee
+      <Link to="/users/reg-form" className='link'>
+        Add New
       </Link>
     </div>
       <DataGrid
