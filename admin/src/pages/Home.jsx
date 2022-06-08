@@ -1,17 +1,40 @@
 import React from 'react'
 import "./styles/home.scss";
 import SideBar from "../components/SideBar"
+import { Button, Card, Form } from 'react-bootstrap';
 
 const Home = () => {
   return (
     <div className='home'>
-        <SideBar/>
         <div className='homeContainer'>
-           <div className='charts'>
-           </div>
-           <div className='listContainer'>
-             <div className='listTitle'>Latest Transactions</div>
-           </div>
+           <Card border="danger" style={{textAlign: "center" , width: "24rem"}} className="home-card">
+             <Card.Header>
+               <Card.Title style={{fontSize: "2rem"}}>
+                 LogIn
+               </Card.Title>
+               <Card.Body>
+                 <Form>
+                   <Form.Group className='mb-3'>
+                     <Form.Control 
+                       type="text"
+                       placeholder="Enter UserName"
+                     />
+                   </Form.Group>
+                   
+                   <Form.Group className='mb-3'>
+                     <Form.Control 
+                       type="password"
+                       placeholder="Enter Password"
+                     />
+                   </Form.Group>
+                   <a href="/users">
+                   <Button variant='danger'>Submit</Button>
+                   </a>
+                  
+                 </Form>
+               </Card.Body>
+             </Card.Header>
+           </Card>
         </div>
     </div>
   )

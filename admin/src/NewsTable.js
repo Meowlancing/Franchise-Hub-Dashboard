@@ -4,6 +4,7 @@ export const userColumns = [
     field:"email", headerName:"Email", width:230,
   },
 ]
+// export const ur = [...new Set(data.map((item) => item.country))];
 export const userRows = [
     { id: 1, email:"snowman@gmail.com",},
     { id: 2, email:"golderstate@gmail.com",},

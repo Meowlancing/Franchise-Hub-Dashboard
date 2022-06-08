@@ -60,7 +60,7 @@ function VideoSection() {
   ];
   var [count, setCount] = useState(2);
   const onAddStudent = () => {
-    setCount(count + 1);
+    setCount(count + 1);  
     const newStudent = {
       id: count,
       link: "Edit and Enter Link ",
