@@ -158,7 +158,7 @@ function Events() {
             }}
           >
             <Input
-              value={editingStudent?.content.event_banner}
+              value={editingStudent?.event_banner}
               onChange={(e) => {
                 setEditingStudent((pre) => {
                   return { ...pre, event_banner: e.target.value };
