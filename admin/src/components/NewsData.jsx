@@ -1,42 +1,46 @@
-import React, { useState, useEffect } from 'react'
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from "axios"
-import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import * as ReactBootStrap from "react-bootstrap"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import { Container } from "react-bootstrap";
+
 
 const NewsData = () => {
-  const [email, setEmail] = useState([]);
-  const [loading, setLoading] = useState(false); 
-  const getEmailData = async()=>{
-    try{
+  const [emails, setEmail] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const getEmailData = async () => {
+    try {
       const data = await axios.get(
-        "http://localhost:4000"
-      )
-      console.log(data);
-      setEmail(data.data);
+        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/newsletter-subscribers/1?quantity=1000"
+      );
+      console.log(data.data.payload);
+      setEmail(data.data.payload);
+    } catch (e) {
+      console.log(e);
     }
-    catch (e){
-      console.log(e)
-    } 
-  }
+  };
 
   const columns = [
-    { dataField:"id", text:"ID"},
-    { dataField:"email", text:"Email Id"},
-  ]
+    { dataField: "_id", text: "ID" },
+    { dataField: "content.email", text: "Email Id" },
+  ];
 
-  useEffect(()=>{
+  useEffect(() => {
     getEmailData();
-  },[]);
+  }, []);
 
   return (
-    <div className='Contain'>
-      <BootstrapTable keyField='id' data={email} columns={columns} pagination={paginationFactory()} />
+    <div style={{padding: "10px 20px"}}>
+      <BootstrapTable
+        keyField="id"
+        data={emails}
+        columns={columns}
+        pagination={paginationFactory()}
+        selectRow={{ mode: "checkbox" }}
+        tabIndexCell
+      />
     </div>
-  )
-}
+  );
+};
 
-export default NewsData
+export default NewsData;

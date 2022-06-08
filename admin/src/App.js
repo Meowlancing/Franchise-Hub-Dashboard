@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home'
 import List from './pages/FranRegList';
 import Login from './pages/Login';
@@ -10,7 +9,6 @@ import VideoSection from './components/VideoSection';
 import Events from './components/Events';
 import FreeAd from "./pages/FreeAd"
 import NewsLet from "./pages/NewsLet"
-
 
 function App() {
   return (
