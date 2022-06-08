@@ -2,7 +2,7 @@ import "antd/dist/antd.css";
 import { Button, Table, Modal, Input } from "antd";
 import { useState } from "react";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-
+import SideBar from "./SideBar.jsx"
 function VideoSection() {
   const [isEditing, setIsEditing] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
@@ -41,7 +41,7 @@ function VideoSection() {
       render: (record) => {
         return (
           <>
-            
+
             <EditOutlined
               onClick={() => {
                 onEditStudent(record);
@@ -58,11 +58,11 @@ function VideoSection() {
       },
     },
   ];
-
+  var [count, setCount] = useState(2);
   const onAddStudent = () => {
-    const randomNumber = parseInt(Math.random() * 1000);
+    setCount(count + 1);
     const newStudent = {
-      id: randomNumber,
+      id: count,
       link: "Edit and Enter Link ",
       channel: "Edit and Enter channel ",
       date: "Edit and Enter Date ",
@@ -92,57 +92,62 @@ function VideoSection() {
     setEditingStudent(null);
   };
   return (
-    <div className="app">
-      <header className="app-header">
-        <Button onClick={onAddStudent}>Add a new Video</Button>
-        <Table columns={columns} dataSource={dataSource}></Table>
-        <Modal
-          title="Edit Info"
-          visible={isEditing}
-          okText="Save"
-          onCancel={() => {
-            resetEditing();
-          }}
-          onOk={() => {
-            setDataSource((pre) => {
-              return pre.map((student) => {
-                if (student.id === editingStudent.id) {
-                  return editingStudent;
-                } else {
-                  return student;
-                }
-              });
-            });
-            resetEditing();
-          }}
-        >
-          <Input
-            value={editingStudent?.link}
-            onChange={(e) => {
-              setEditingStudent((pre) => {
-                return { ...pre, link: e.target.value };
-              });
+    <>
+      <div className="app" style={{ display: "flex" }}>
+        <div style={{ flex: "1" }}>
+          <SideBar />
+        </div>
+        <header className="app-header" style={{ flex: "6", padding: "30px" }}>
+          <Button onClick={onAddStudent} className="mb-4">Add a new Video</Button>
+          <Table columns={columns} dataSource={dataSource}></Table>
+          <Modal
+            title="Edit Info"
+            visible={isEditing}
+            okText="Save"
+            onCancel={() => {
+              resetEditing();
             }}
-          />
-          <Input
-            value={editingStudent?.channel}
-            onChange={(e) => {
-              setEditingStudent((pre) => {
-                return { ...pre, channel: e.target.value };
+            onOk={() => {
+              setDataSource((pre) => {
+                return pre.map((student) => {
+                  if (student.id === editingStudent.id) {
+                    return editingStudent;
+                  } else {
+                    return student;
+                  }
+                });
               });
+              resetEditing();
             }}
-          />
-          <Input
-            value={editingStudent?.date}
-            onChange={(e) => {
-              setEditingStudent((pre) => {
-                return { ...pre, date: e.target.value };
-              });
-            }}
-          />
-        </Modal>
-      </header>
-    </div>
+          >
+            <Input
+              value={editingStudent?.link}
+              onChange={(e) => {
+                setEditingStudent((pre) => {
+                  return { ...pre, link: e.target.value };
+                });
+              }}
+            />
+            <Input
+              value={editingStudent?.channel}
+              onChange={(e) => {
+                setEditingStudent((pre) => {
+                  return { ...pre, channel: e.target.value };
+                });
+              }}
+            />
+            <Input
+              value={editingStudent?.date}
+              onChange={(e) => {
+                setEditingStudent((pre) => {
+                  return { ...pre, date: e.target.value };
+                });
+              }}
+            />
+          </Modal>
+        </header>
+      </div>
+    </>
   );
 }
 
