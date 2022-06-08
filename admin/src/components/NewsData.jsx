@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import "./styles/datatable.scss"
 import { Link } from 'react-router-dom';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+// import { DataGrid, GridColDef, GridValueGetterParams, GridRowsProp } from '@mui/x-data-grid';
+import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../NewsTable';
 import axios from 'axios';
 
 export default function DataTable() {
-  const [data, setData] = useState(userRows)
 
-  const handleDelete = (id) => {
-    setData(data.filter(item => item.id !== id))
-  };
   const actionColumn = [
     {
       field: "action", headerName: "Action", width: 200, renderCell: (params) => {
@@ -26,7 +23,7 @@ export default function DataTable() {
       }
     }
   ]
-// export const userRows = [...new Set(data.map((item) => item.news))];
+
   const [news, setNews] = useState([]);
   useEffect(() => {
     axios
@@ -34,13 +31,20 @@ export default function DataTable() {
         "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/newsletter-subscribers/1?quantity=9"
       )
       .then((res) => {
-        setNews(res.data)
-        console.log(res.data);
+        setNews(res.data.payload)
+        console.log(res.data.payload);
       })
       .catch((err) => console.log(err));
 
   }, []);
-
+console.log(news);
+  const rows = news.map((item) => item);
+  const [data, setData] = useState(rows)
+  const getRowId = params => params.news._id;
+  const handleDelete = (id) => {
+    setData(data.filter(item => item.id !== id))
+  };
+  console.log(rows);
   return (
     <div className='datatable'>
       <div className='datatableTitle'>
@@ -48,7 +52,8 @@ export default function DataTable() {
       </div>
 
       <DataGrid
-        rows={userRows}
+        getRowId= {r => r._id}
+        rows={rows}
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
