@@ -11,13 +11,13 @@ export const userColumns = [
     field:"advice", headerName:"Advice on", width:2000,},
 ]
 export const userRows = [
-    { id: 1, username: 'Snow', advice:"I shouldn't study CS", email:"snowman@gmail.com", mobile: 12212535335 },
-    { id: 2, username: 'Lannister', advice:"I shouldn't study CS", email:"golderstate@gmail.com", mobile: 12212535342 },
-    { id: 3, username: 'Lannister', advice:"I shouldn't study CS", email:"onepac@gmail.com", mobile: 12212535345 },
-    { id: 4, username: 'Stark', advice:"I shouldn't study CS", email:"mouseman@gmail.com", mobile: 12212535316 },
-    { id: 5, username: 'Targaryen', advice:"I shouldn't study CS", email:"meow@gmail.com", mobile: 122125353},
-    { id: 6, username: 'Melisandre', advice:"I shouldn't study CS", email:"lemonjems@gmail.com", mobile: 122125353150 },
-    { id: 7, username: 'Clifford', advice:"I shouldn't study CS", email:"hevestarvey@gmail.com", mobile: 12212535344 },
-    { id: 8, username: 'Frances', advice:"I shouldn't study CS", email:"baltsae@gmail.com", mobile: 12212535336 },
-    { id: 9, username: 'Roxie', advice:"I shouldn't study CS", email:"taklu@gmail.com", mobile: 12212535365 },
+    { id: 1, username: 'Snow', advice:"I should study CS ", email:"snowman@gmail.com", mobile: 12212535335 },
+    { id: 2, username: 'Lannister', advice:"I should study CS", email:"golderstate@gmail.com", mobile: 12212535342 },
+    { id: 3, username: 'Lannister', advice:"I should study CS", email:"onepac@gmail.com", mobile: 12212535345 },
+    { id: 4, username: 'Stark', advice:"I should study CS", email:"mouseman@gmail.com", mobile: 12212535316 },
+    { id: 5, username: 'Targaryen', advice:"I should study CS", email:"meow@gmail.com", mobile: 122125353},
+    { id: 6, username: 'Melisandre', advice:"I should study CS", email:"lemonjems@gmail.com", mobile: 122125353150 },
+    { id: 7, username: 'Clifford', advice:"I should study CS", email:"hevestarvey@gmail.com", mobile: 12212535344 },
+    { id: 8, username: 'Frances', advice:"I should study CS", email:"baltsae@gmail.com", mobile: 12212535336 },
+    { id: 9, username: 'Roxie', advice:"I should study CS", email:"taklu@gmail.com", mobile: 12212535365 },
   ];
