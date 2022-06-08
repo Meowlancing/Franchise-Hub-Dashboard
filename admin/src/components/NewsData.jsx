@@ -1,64 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import "./styles/datatable.scss"
-import { Link } from 'react-router-dom';
-// import { DataGrid, GridColDef, GridValueGetterParams, GridRowsProp } from '@mui/x-data-grid';
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
-import { userColumns, userRows } from '../NewsTable';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios"
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import * as ReactBootStrap from "react-bootstrap"
 
-export default function DataTable() {
-
-  const actionColumn = [
-    {
-      field: "action", headerName: "Action", width: 200, renderCell: (params) => {
-        return (
-          <div className='cellAction'>
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className='viewButton' style={{ display: "none" }}>View</div>
-            </Link>
-            <div className='deleteButton' onClick={() => handleDelete(params.row.id)}>Delete</div>
-            <div className='approveButton' style={{ display: "none" }}>Approve</div>
-          </div>
-        )
-      }
+const NewsData = () => {
+  const [email, setEmail] = useState([]);
+  const [loading, setLoading] = useState(false); 
+  const getEmailData = async()=>{
+    try{
+      const data = await axios.get(
+        "http://localhost:4000"
+      )
+      console.log(data);
+      setEmail(data.data);
     }
+    catch (e){
+      console.log(e)
+    } 
+  }
+
+  const columns = [
+    { dataField:"id", text:"ID"},
+    { dataField:"email", text:"Email Id"},
   ]
 
-  const [news, setNews] = useState([]);
-  useEffect(() => {
-    axios
-      .get(
-        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/newsletter-subscribers/1?quantity=9"
-      )
-      .then((res) => {
-        setNews(res.data.payload)
-        console.log(res.data.payload);
-      })
-      .catch((err) => console.log(err));
+  useEffect(()=>{
+    getEmailData();
+  },[]);
 
-  }, []);
-console.log(news);
-  const rows = news.map((item) => item);
-  const [data, setData] = useState(rows)
-  const getRowId = params => params.news._id;
-  const handleDelete = (id) => {
-    setData(data.filter(item => item.id !== id))
-  };
-  console.log(rows);
   return (
-    <div className='datatable'>
-      <div className='datatableTitle'>
-        Subscribers
-      </div>
-
-      <DataGrid
-        getRowId= {r => r._id}
-        rows={rows}
-        columns={userColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-      />
+    <div className='Contain'>
+      <BootstrapTable keyField='id' data={email} columns={columns} pagination={paginationFactory()} />
     </div>
-  );
+  )
 }
+
+export default NewsData
