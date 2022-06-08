@@ -1,76 +1,57 @@
-import React, { useEffect, useState } from 'react'
-import "./styles/datatable.scss"
-import { Link } from 'react-router-dom';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import { userColumns, userRows } from '../FreeAdTable';
-import axios from '../api/axios';
+import React, { useEffect, useState } from "react";
+import "./styles/datatable.scss";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import axios from "../api/axios";
 
 export default function DataTable() {
-  const [data, setData] = useState(userRows)
-
-  const handleDelete = (id) => {
-    setData(data.filter(item => item.id !== id))
-  };
-  const actionColumn = [
-    {
-      field: "action", headerName: "", width: 200, renderCell: (params) => {
-        return (
-          <div className='cellAction'>
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div style={{ display: "none" }} className='viewButton'>View</div>
-            </Link>
-            <div style={{ display: "none" }} className='deleteButton' onClick={() => handleDelete(params.row.id)}>Delete</div>
-            <div style={{ display: "none" }} className='approveButton'>Approve</div>
-          </div>
-        )
-      }
-    }
-  ]
-
+  
   const [advice, setAdvice] = useState([]);
-  const [loading, setLoading] = useState(false);
+
   const getAdviceData = async () => {
     try {
       const data = await axios.get(
-        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/newsletter-subscribers/1?quantity=10"
-      )
+        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/free-advice/1?quantity=1000"
+      );
       console.log(data.data.payload);
       setAdvice(data.data.payload);
+    } catch (e) {
+      console.log(e);
     }
-    catch (e) {
-      console.log(e)
-    }
-
-  }
+  };
   useEffect(() => {
     getAdviceData();
   }, []);
 
-const columns = [
-    { field: '_id', headerName: 'ID', width: 70 },
-    // { field: 'username', headerName: 'User', width: 230, },
+  const columns = [
+    { dataField: "_id", text: "ID", width: 70 },
+    { dataField: "username", text: "User", width: 230 },
     {
-      field: "content.email", headerName: "Email", width: 230,
+      dataField: "content.email",
+      text: "Email",
+      width: 230,
     },
-    // {
-    //   field: "mobile", headerName: "Mobile No.", width: 100,
-    // },
-    // {
-    //   field: "advice", headerName: "Advice on", width: 2000,
-    // },
-  ]
+    {
+      dataField: "mobile",
+      text: "Mobile No.",
+      width: 100,
+    },
+    {
+      dataField: "advice",
+      text: "Advice on",
+      width: 2000,
+    },
+  ];
   return (
-    <div className='datatable'>
-      <div className='datatableTitle'>
-        Advices
-      </div>
-      <DataGrid
-        getRowId={r => r._id}
-        rows={advice}
+    <div className="datatable">
+      <div className="datatableTitle">Advices</div>
+      <BootstrapTable
+        keyField="id"
+        data={advice}
         columns={columns}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
+        pagination={paginationFactory()}
+        selectRow={{ mode: "checkbox" }}
+        tabIndexCell
       />
     </div>
   );

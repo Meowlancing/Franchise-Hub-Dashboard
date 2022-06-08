@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import { Container } from "react-bootstrap";
-
 
 const NewsData = () => {
   const [emails, setEmail] = useState([]);
-  const [loading, setLoading] = useState(false);
+
   const getEmailData = async () => {
     try {
       const data = await axios.get(
@@ -30,7 +28,7 @@ const NewsData = () => {
   }, []);
 
   return (
-    <div style={{padding: "10px 20px"}}>
+    <div style={{ padding: "10px 20px" }}>
       <BootstrapTable
         keyField="id"
         data={emails}
