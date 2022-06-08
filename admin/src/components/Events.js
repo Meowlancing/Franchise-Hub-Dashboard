@@ -23,7 +23,7 @@ const Events = () => {
   }
 
   return (
-    <div className="container">
+    <>
     <h1 className="header">Upload Events</h1>
     <div className="left">
         <SideBar/>
@@ -61,7 +61,7 @@ const Events = () => {
       </Button>
     </Form>
     </div>
-    </div>
+    </>
   );
 };
 

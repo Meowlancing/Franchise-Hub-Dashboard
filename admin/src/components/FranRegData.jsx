@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./styles/datatable.scss"
 import { Link } from 'react-router-dom';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import { userColumns , userRows } from '../DataTableSource';
+import { userColumns , userRows } from '../FranchisorRegTable';
 
 export default function DataTable() {
   const [data,setData]=useState(userRows)

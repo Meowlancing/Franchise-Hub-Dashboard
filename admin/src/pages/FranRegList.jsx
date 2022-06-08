@@ -1,7 +1,7 @@
 import React from 'react'
 import "./styles/list.scss"
 import SideBar from "../components/SideBar"
-import DataTable from '../components/DataTable'
+import DataTable from '../components/FranRegData'
 function List() {
   return (
     <div className='list'>

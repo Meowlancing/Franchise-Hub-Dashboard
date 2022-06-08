@@ -1,7 +1,6 @@
 import React from 'react'
 import "./styles/home.scss";
 import SideBar from "../components/SideBar"
-import TableMain from '../components/TableMain';
 
 const Home = () => {
   return (
@@ -12,7 +11,6 @@ const Home = () => {
            </div>
            <div className='listContainer'>
              <div className='listTitle'>Latest Transactions</div>
-             <TableMain/>
            </div>
         </div>
     </div>

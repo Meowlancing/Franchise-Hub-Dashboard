@@ -1,9 +1,11 @@
 .App{
-    display: flex;
 }
 .RightContainer{
-    flex: 4;
+    width: 75vw;
+    position: relative;
+    margin-left: 15vw;
+    top: -90vh;
 }
 .LeftContainer{
-    flex: 2;
+    width: 15vw;
 }

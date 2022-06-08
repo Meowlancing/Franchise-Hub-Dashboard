@@ -92,8 +92,8 @@ function VideoSection() {
     setEditingStudent(null);
   };
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="app-header">
         <Button onClick={onAddStudent}>Add a new Video</Button>
         <Table columns={columns} dataSource={dataSource}></Table>
         <Modal

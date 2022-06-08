@@ -4,7 +4,6 @@ import SideBar from "../components/SideBar"
 import { useState } from "react";
 import "../components/styles/Brandpage.css"
 import { Card, Row, Col, Navbar, Nav, Button } from "react-bootstrap";
-import TableMain from "../components/TableMain"
 function BrandPage(props) {
   let [count, setCount] = useState(0);
   function handleLike() {
@@ -265,7 +264,6 @@ function BrandPage(props) {
         </div>
         <div className='bottom'>
         <h1 className='title'>Latest Investors</h1>
-          <TableMain/>
         </div>
       </div>
     </div>
