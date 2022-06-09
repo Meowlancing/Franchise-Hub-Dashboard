@@ -10,13 +10,12 @@ function Events() {
   const [editingStudent, setEditingStudent] = useState(null);
   const [dataSource, setDataSource] = useState([
     {
-      content: {
-        event_banner: "",
-        event_title: "",
-        event_link: "",
-      },
-    },
-  ]);
+      event_banner: "",
+      event_title: "",
+      event_link: "",
+
+    }],
+  );
 
   const columns = [
     {
@@ -109,16 +108,24 @@ function Events() {
   //   console.log(e.target.value)
   // }
 
-  // post api will be there
+  const dataBanner = dataSource.map((item) => item.event_banner).toString();
+  const dataTitle = dataSource.map((item) => item.event_title).toString();
+  const dataLink = dataSource.map((item) => item.event_link).toString();
+  console.log(dataBanner);
   async function postData() {
     try {
       const response = await axios({
         method: "post",
         url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/new",
-        data: dataSource,
+        data: {
+          event_banner: dataBanner,
+          event_title: dataTitle,
+          event_link: dataLink
+        },
       });
-      console.log(dataSource);
+
       console.log(response.data);
+      console.log(dataSource);
       // return  response;
     } catch (error) {
       console.log("error");
