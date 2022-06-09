@@ -9,6 +9,7 @@ import VideoSection from './components/VideoSection';
 import Events from './components/Events';
 import FreeAd from "./pages/FreeAd"
 import NewsLet from "./pages/NewsLet"
+import AddEvent from './components/pages/AddEvent';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
        <Route path='/free/' element={<FreeAd/>} />
        <Route path='/newsletter/' element={<NewsLet/>} />
        <Route path='/access/' element={<Login/>} />
-
+       <Route path='/addevent' element={<AddEvent/>} />
        <Route path='users'>
          <Route index element={<List/>}/>
          <Route path=':franchisor-reg' element={<List/>}/>

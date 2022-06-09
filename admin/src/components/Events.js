@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { EditOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
+import AddEvent from "./pages/AddEvent.jsx";
 
 function Events() {
-// api get
+  // api get
   const [events, setEvents] = useState([]);
 
   const getEvents = async () => {
@@ -24,19 +25,13 @@ function Events() {
 
   useEffect(() => {
     getEvents();
-  },[]);
-   const id = events.map((item) => item._id);
-  // api post 
+  }, []);
+
+  const id = events.map((item) => item._id);
+  // api post
   const [isEditing, setIsEditing] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
-  const [dataSource, setDataSource] = useState([
-    {
-      event_banner: "",
-      event_title: "",
-      event_link: "",
 
-    }],
-  );
 
   const columns = [
     {
@@ -78,41 +73,15 @@ function Events() {
               }}
               style={{ color: "red", marginLeft: 10 }}
             />
-            <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} />
+            {/* <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} /> */}
           </>
         );
       },
     },
   ];
-
-  const onAddStudent = () => {
-    const newStudent = {
-      id: id,
-      event_banner: "Edit and Enter Poster Link",
-      event_title: "Edit and Enter Title",
-      event_link: "Edit and Enter Link ",
-    };
-    setDataSource((pre) => {  
-      return [...pre, newStudent];
-    });
-  };
-
+  
   const onDeleteStudent = async (record) => {
-    // await axios(
-    //   {
-
-    //   }
-    // )
-    Modal.confirm({
-      title: "Are you sure, you want to delete this?",
-      okText: "Yes",
-      okType: "danger",
-      onOk: () => {
-        setDataSource((pre) => {
-          return pre.filter((student) => student.id !== record.id);
-        });
-      },
-    });
+  
   };
   const onEditStudent = (record) => {
     setIsEditing(true);
@@ -123,40 +92,6 @@ function Events() {
     setEditingStudent(null);
   };
 
-  // // uploading the poster
-  // const [file, setFile] = useState([]);
-
-  // function uploadSingleFile(e) {
-  //   setFile([...file, URL.createObjectURL(e.target.files[0])]);
-  //   console.log("file", file);
-  //   console.log(e.target.value)
-  // }
-
-  const dataBanner = dataSource.map((item) => item.event_banner).toString();
-  const dataTitle = dataSource.map((item) => item.event_title).toString();
-  const dataLink = dataSource.map((item) => item.event_link).toString();
-  console.log(dataBanner);
-  async function postData() {
-    try {
-      const response = await axios({
-        method: "post",
-        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/new",
-        data: {
-          event_banner: dataBanner,
-          event_title: dataTitle,
-          event_link: dataLink
-        },
-      });
-
-      console.log(response.data);
-      console.log(dataSource);
-      // return  response;
-    } catch (error) {
-      console.log("error");
-      return [];
-    }
-  }
-
   return (
     <>
       <div className="app" style={{ display: "flex" }}>
@@ -164,10 +99,12 @@ function Events() {
           <SideBar />
         </div>
         <header className="app-header" style={{ flex: "6", padding: "30px" }}>
-          <Button onClick={onAddStudent} className="mb-4">
-            Add a new Event
-          </Button>
-          <Table columns={columns} dataSource={dataSource}></Table>
+          <a href="/addevent">
+            <Button className="mb-4">
+              Add a new Event
+            </Button>
+          </a>
+          <Table columns={columns} dataSource={events}></Table>
           <Modal
             title="Edit Info"
             visible={isEditing}
@@ -175,18 +112,18 @@ function Events() {
             onCancel={() => {
               resetEditing();
             }}
-            onOk={() => {
-              setDataSource((pre) => {
-                return pre.map((student) => {
-                  if (student.id === editingStudent.id) {
-                    return editingStudent;
-                  } else {
-                    return student;
-                  }
-                });
-              });
-              resetEditing();
-            }}
+            // onOk={() => {
+            //   setDataSource((pre) => {
+            //     return pre.map((student) => {
+            //       if (student.id === editingStudent.id) {
+            //         return editingStudent;
+            //       } else {
+            //         return student;
+            //       }
+            //     });
+            //   });
+            //   resetEditing();
+            // }}
           >
             <Input
               value={editingStudent?.event_banner}
