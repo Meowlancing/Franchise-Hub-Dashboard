@@ -1,11 +1,32 @@
 import "antd/dist/antd.css";
 import { Button, Table, Modal, Input, Upload, message } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EditOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
 
 function Events() {
+// api get
+  const [events, setEvents] = useState([]);
+
+  const getEvents = async () => {
+    try {
+      const data = await axios.get(
+        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/1?quantity=1000"
+      );
+      console.log(data.data.payload);
+      setEvents(data.data.payload);
+    } catch (e) {
+      console.log(e);
+    }
+    console.log(events._id);
+  };
+
+  useEffect(() => {
+    getEvents();
+  },[]);
+   const id = events.map((item) => item._id);
+  // api post 
   const [isEditing, setIsEditing] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
   const [dataSource, setDataSource] = useState([
@@ -21,7 +42,7 @@ function Events() {
     {
       key: "1",
       title: "ID",
-      dataIndex: "id",
+      dataIndex: "_id",
     },
     {
       key: "2",
@@ -64,23 +85,26 @@ function Events() {
     },
   ];
 
-  var [count, setCount] = useState(2);
   const onAddStudent = () => {
-    setCount(count + 1);
     const newStudent = {
-      id: count,
+      id: id,
       event_banner: "Edit and Enter Poster Link",
       event_title: "Edit and Enter Title",
       event_link: "Edit and Enter Link ",
     };
-    setDataSource((pre) => {
+    setDataSource((pre) => {  
       return [...pre, newStudent];
     });
   };
 
-  const onDeleteStudent = (record) => {
+  const onDeleteStudent = async (record) => {
+    // await axios(
+    //   {
+
+    //   }
+    // )
     Modal.confirm({
-      title: "Are you sure, you want to delete this student record?",
+      title: "Are you sure, you want to delete this?",
       okText: "Yes",
       okType: "danger",
       onOk: () => {
