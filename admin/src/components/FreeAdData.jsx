@@ -11,7 +11,7 @@ export default function DataTable() {
   const getAdviceData = async () => {
     try {
       const data = await axios.get(
-        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/free-advice/1?quantity=1000"
+        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/free-advice/all/1?quantity=1000"
       );
       console.log(data.data.payload);
       setAdvice(data.data.payload);
@@ -22,22 +22,21 @@ export default function DataTable() {
   useEffect(() => {
     getAdviceData();
   }, []);
-
+console.log(advice);
   const columns = [
     { dataField: "_id", text: "ID", width: 70 },
-    { dataField: "username", text: "User", width: 230 },
     {
       dataField: "content.email",
       text: "Email",
       width: 230,
     },
     {
-      dataField: "mobile",
+      dataField: "content.phone_no",
       text: "Mobile No.",
       width: 100,
     },
     {
-      dataField: "advice",
+      dataField: "content.advise_on",
       text: "Advice on",
       width: 2000,
     },

@@ -288,8 +288,8 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                         <option value="0" selected="">
                           Select Property type
                         </option>
-                        <option value="1">Domestic</option>
-                        <option value="2">Comercial</option>
+                        <option value="Domestic">Domestic</option>
+                        <option value="Comercial">Comercial</option>
                       </select>
                     </div>
                   </InputGroup>
@@ -307,7 +307,6 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                     <div class="input-group">
                       <input
                         type="text"
-                        value=""
                         name="prop_area_min"
                         id="prop_area_min"
                         pattern="[0-9]{2,5}"
@@ -323,7 +322,6 @@ const Property = ({ nextStep, handleFormData, prevStep, values }) => {
                   <div class="col-xs-12 col-sm-3 row-no-padding wwidth148 FlrAreaMax">
                     <input
                       type="text"
-                      value=""
                       name="prop_area_max"
                       id="prop_area_max"
                       pattern="[0-9]{3,6}"

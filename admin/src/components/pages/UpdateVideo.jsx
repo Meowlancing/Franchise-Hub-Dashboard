@@ -53,7 +53,7 @@ function AddVideos() {
             <Row>
               <Col lg="6">
                 <Form.Group className="mb-3">
-                  <h4>Enter Channel:</h4>
+                  <h4>Edit Channel:</h4>
                   <Form.Control
                     type='text'
                     placeholder='Enter the link of the video'
@@ -63,7 +63,7 @@ function AddVideos() {
               </Col>
               <Col lg="6">
                 <Form.Group className="mb-3">
-                  <h4>Enter Title:</h4>
+                  <h4>Edit Title:</h4>
                   <Form.Control
                     type='text'
                     placeholder='Enter the title of the video'
@@ -73,7 +73,7 @@ function AddVideos() {
               </Col>
 
               <Form.Group className="mb-3">
-                <h4>Enter Link:</h4>
+                <h4>Edit Link:</h4>
                 <Form.Control
                   type='text'
                   placeholder='Enter the title of the video'

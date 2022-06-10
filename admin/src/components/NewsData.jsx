@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./styles/datatable.scss";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
@@ -29,6 +30,7 @@ const NewsData = () => {
 
   return (
     <div style={{ padding: "10px 20px" }}>
+    <div className="datatableTitle">Newsletter</div>
       <BootstrapTable
         keyField="id"
         data={emails}
