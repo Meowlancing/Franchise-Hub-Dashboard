@@ -7,7 +7,7 @@ function AddVideos() {
   const [form, setForm] = useState(
     {
       thumbnail_link: "",
-      channel: "",
+      description: "",
       title: "",
     },
   )
@@ -53,11 +53,11 @@ function AddVideos() {
             <Row>
               <Col lg="6">
                 <Form.Group className="mb-3">
-                  <h4>Enter Channel:</h4>
+                  <h4>Enter Image:</h4>
                   <Form.Control
                     type='text'
-                    placeholder='Enter the link of the video'
-                    onChange={handleForm("channel")}
+                    placeholder='Enter the image of video'
+                    onChange={handleForm("description")}
                   />
                 </Form.Group>
               </Col>
@@ -76,7 +76,7 @@ function AddVideos() {
                 <h4>Enter Link:</h4>
                 <Form.Control
                   type='text'
-                  placeholder='Enter the title of the video'
+                  placeholder='Enter the video link'
                   onChange={handleForm("thumbnail_link")}
                 />
               </Form.Group>
