@@ -6,7 +6,7 @@ import axios from '../../api/axios'
 function AddVideos() {
   const [form, setForm] = useState(
     {
-      link: "",
+      thumbnail_link: "",
       channel: "",
       title: "",
     },
@@ -56,8 +56,8 @@ function AddVideos() {
                   <h4>Enter Image:</h4>
                   <Form.Control
                     type='text'
-                    placeholder='Enter the link of the image'
-                    onChange={handleForm("event_banner")}
+                    placeholder='Enter the link of the video'
+                    onChange={handleForm("thumbnail_link")}
                   />
                 </Form.Group>
               </Col>
@@ -66,19 +66,11 @@ function AddVideos() {
                   <h4>Enter Title:</h4>
                   <Form.Control
                     type='text'
-                    placeholder='Enter the link of the title'
-                    onChange={handleForm("event_title")}
+                    placeholder='Enter the title of the video'
+                    onChange={handleForm("title")}
                   />
                 </Form.Group>
               </Col>
-              <Form.Group className="mb-3">
-                <h4>Enter Link:</h4>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter the link'
-                  onChange={handleForm("event_link")}
-                />
-              </Form.Group>
             </Row>
             <Button variant='primary' style={{ textAlign: "center" }} onClick={postData}>Submit</Button>
           </Form>
