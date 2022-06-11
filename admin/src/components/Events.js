@@ -85,11 +85,6 @@ function Events() {
 
 
 
-  
-
-  const onDeleteStudent = async (record) => {
-  
-  };
   const onEditStudent = (record) => {
     setIsEditing(true);
     setEditingStudent({ ...record });

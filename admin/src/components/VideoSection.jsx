@@ -69,12 +69,10 @@ function VideoSection() {
               />
             </Link>
 
-            <DeleteOutlined
-              onClick={() => {
-                onDeleteStudent(record);
-              }}
+            <Button><DeleteOutlined
+              onClick={(e) =>{ console.log("enough"); PostDelete(record._id,e)}}
               style={{ color: "red", marginLeft: 10 }}
-            />
+            />Delete</Button>
             {/* <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} /> */}
           </>
         );
@@ -82,9 +80,15 @@ function VideoSection() {
     },
   ];
 
-  const onDeleteStudent = async (record) => {
+  const PostDelete = (_id,e) => {
+    e.preventDefault();
+    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/${_id}`)
+    .then(res=>{
+      console.log("Deleted",res)
+    }).catch(err=> console.log(err))
+  }
 
-  };
+
   const navigate = useNavigate();
   const onEditStudent = () => {
     
