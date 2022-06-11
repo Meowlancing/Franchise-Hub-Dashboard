@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className='home'>
         <div className='homeContainer'>
-           <Card border="danger" style={{textAlign: "center" , width: "24rem"}} className="home-card">
+           <Card id="HomeCardContainer" border="danger" style={{textAlign: "center" , width: "24rem"}} className="home-card">
              <Card.Header>
                <Card.Title style={{fontSize: "2rem"}}>
                  LogIn

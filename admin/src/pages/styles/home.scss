@@ -2,20 +2,11 @@
   display: flex;
   .homeContainer {
     flex: 6;
-    margin: 150px 480px;
+    align-self: center;
+    align-items: center;
+    justify-self: center;
     .home-card {
       text-align: center;
-      
-    }
-    .widgets,
-    .charts {
-      display: flex;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    .charts {
-      padding: 5px 20px;
     }
   }
 }
