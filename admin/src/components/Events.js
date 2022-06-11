@@ -134,7 +134,7 @@ function Events() {
                   return { ...pre, event_banner: e.target.value };
                 });
               }}
-              style={{ marginBottom: "10px" }}
+              style={{ marginBottom: "10px" , width:"10vw" }}
             />
             <Input
               value={editingStudent?.event_title}
@@ -143,7 +143,7 @@ function Events() {
                   return { ...pre, event_title: e.target.value };
                 });
               }}
-              style={{ marginBottom: "10px" }}
+              style={{ marginBottom: "10px" , width:"10vw" }}
             />
             <Input
               value={editingStudent?.event_link}
@@ -152,7 +152,7 @@ function Events() {
                   return { ...pre, event_link: e.target.value };
                 });
               }}
-              style={{ marginBottom: "10px" }}
+              style={{ marginBottom: "10px" , width:"10vw" }}
             />
             {/* <Form.Group>
               <input

@@ -147,7 +147,7 @@ function VideoSection() {
                   return { ...pre, title: e.target.value };
                 });
               }}
-              style={{ marginBottom: "10px" }}
+              style={{ marginBottom: "10px" , width:"10vw" }}
             />
             <Input
               value={editingStudent?.thumbnail_link}
@@ -156,7 +156,7 @@ function VideoSection() {
                   return { ...pre, thumbnail_link: e.target.value };
                 });
               }}
-              style={{ marginBottom: "10px" }}
+              style={{ marginBottom: "10px" , width:"10vw"}}
             />
 
             {/* <Form.Group>
