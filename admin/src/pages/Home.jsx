@@ -2,8 +2,27 @@ import React from 'react'
 import "./styles/home.scss";
 import SideBar from "../components/SideBar"
 import { Button, Card, Form } from 'react-bootstrap';
+import axios from "axios"
 
 const Home = () => {
+
+  async function postData() {
+    try {
+      const response = await axios({
+        method: "post",
+        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/login",
+        data: "",
+      });
+
+      console.log(response.data);
+      // return  response;
+    } catch (error) {
+      console.log("error");
+      return [];
+    }
+    console.log("");
+  }
+
   return (
     <div className='home'>
         <div className='homeContainer'>

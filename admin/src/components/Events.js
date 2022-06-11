@@ -77,7 +77,7 @@ function Events() {
 
   const PostDelete = (_id,e) => {
     e.preventDefault();
-    axios.delete('https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/:${_id}')
+    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/${_id}`)
     .then(res=>{
       console.log("Deleted",res)
     }).catch(err=> console.log(err))
