@@ -63,10 +63,10 @@ function Events() {
       render: (record) => {
         return (
           <>
-            <Button><DeleteOutlined
+            <DeleteOutlined
               onClick={(e) =>{ console.log("enough"); PostDelete(record._id,e)}}
               style={{ color: "red", marginLeft: 10 }}
-            />Delete</Button>
+            ></DeleteOutlined>
             {/* <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} /> */}
           </>
         );
