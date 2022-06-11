@@ -100,14 +100,16 @@ function Events() {
         <div style={{ flex: "1" }}>
           <SideBar />
         </div>
-        <header className="app-header" style={{ flex: "6",}}>
+        <header className="app-header" style={{ flex: "2 -2",}}>
           <a href="/addevent">
             <Button className="mb-4">
               Add a new Event
             </Button>
           </a>
-          <Table columns={columns} dataSource={events}></Table>
+          <Table columns={columns} dataSource={events} style={{width:"85%"}}></Table>
           <Modal
+
+            style={{width:"70vw"}}
             title="Edit Info"
             visible={isEditing}
             okText="Save"

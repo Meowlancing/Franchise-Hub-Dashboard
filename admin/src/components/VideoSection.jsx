@@ -110,7 +110,7 @@ function VideoSection() {
               Add a Video
             </Button>
           </a>
-          <Table columns={columns} dataSource={events}></Table>
+          <Table columns={columns} dataSource={events} style={{width:"85%"}}></Table>
           <Modal
             title="Edit Info"
             visible={isEditing}
