@@ -5,6 +5,7 @@ import { EditOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
 import AddEvent from "./pages/AddEvent.jsx";
+import { Axios } from "axios";
 
 function Events() {
   // api get
@@ -62,17 +63,10 @@ function Events() {
       render: (record) => {
         return (
           <>
-            <EditOutlined
-              onClick={() => {
-                onEditStudent(record);
-              }}
-            />
-            <DeleteOutlined
-              onClick={() => {
-                onDeleteStudent(record);
-              }}
+            <Button><DeleteOutlined
+              onClick={(e) =>{ console.log("enough"); PostDelete(record._id,e)}}
               style={{ color: "red", marginLeft: 10 }}
-            />
+            />Delete</Button>
             {/* <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} /> */}
           </>
         );
@@ -80,6 +74,19 @@ function Events() {
     },
   ];
   
+
+  const PostDelete = (_id,e) => {
+    e.preventDefault();
+    axios.delete('https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/:${_id}')
+    .then(res=>{
+      console.log("Deleted",res)
+    }).catch(err=> console.log(err))
+  }
+
+
+
+  
+
   const onDeleteStudent = async (record) => {
   
   };
@@ -98,7 +105,7 @@ function Events() {
         <div style={{ flex: "1" }}>
           <SideBar />
         </div>
-        <header className="app-header" style={{ flex: "6", padding: "30px" }}>
+        <header className="app-header" style={{ flex: "6",}}>
           <a href="/addevent">
             <Button className="mb-4">
               Add a new Event
@@ -152,7 +159,6 @@ function Events() {
               }}
               style={{ marginBottom: "10px" }}
             />
-
             {/* <Form.Group>
               <input
                 type="file"
