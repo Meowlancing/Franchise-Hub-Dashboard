@@ -14,7 +14,7 @@ function Events() {
   const getEvents = async () => {
     try {
       const data = await axios.get(
-        "http://localhost:4000/api/v1/admin/dashboard/web/events/1?quantity=1000"
+        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/1?quantity=1000"
       );
       console.log(data.data.payload);
       setEvents(data.data.payload);
@@ -71,7 +71,7 @@ function Events() {
 
   const PostDelete = (_id,e) => {
     e.preventDefault();
-    axios.delete(`http://localhost:4000/api/v1/admin/dashboard/web/events/${_id}`)
+    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/${_id}`)
     .then(res=>{
       console.log("Deleted",res)
     }).catch(err=> console.log(err))

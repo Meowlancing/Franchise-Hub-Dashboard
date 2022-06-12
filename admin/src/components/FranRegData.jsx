@@ -16,7 +16,7 @@ function FranRegData() {
     try {
       const data = await axios({
         method: 'get',
-        url: "http://localhost:4000/api/v1/admin/dashboard/forms/franchisor-registration/all/1?quantity=1000",
+        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/franchisor-registration/all/1?quantity=1000",
         headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -98,7 +98,7 @@ console.log(brandname);
   const PostDelete = (_id, e) => {
     e.preventDefault();
     console.log(_id);
-    axios.delete(`http://localhost:4000/api/v1/admin/dashboard/forms/franchisor-registration/${_id}`)
+    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/franchisor-registration/${_id}`)
       .then(res => {
         console.log("Deleted", res)
       }).catch(err => console.log(err))

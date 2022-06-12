@@ -12,7 +12,7 @@ export default function DataTable() {
   const getAdviceData = async () => {
     try {
       const data = await axios({
-        url: "http://localhost:4000/api/v1/admin/dashboard/forms/free-advice/all/1?quantity=1000",
+        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/free-advice/all/1?quantity=1000",
         method: 'get',
         headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`

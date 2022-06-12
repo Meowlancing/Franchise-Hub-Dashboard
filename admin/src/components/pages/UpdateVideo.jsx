@@ -31,7 +31,7 @@ function AddVideos() {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/new",
+        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/new",
         data: form,
         headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`

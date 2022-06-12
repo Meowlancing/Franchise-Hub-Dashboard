@@ -16,7 +16,7 @@ function VideoSection() {
     try {
       const data = await axios({
         method: 'get',
-        url: "http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/1?quantity=1000",
+        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/1?quantity=1000",
         headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -80,7 +80,7 @@ function VideoSection() {
     e.preventDefault();
     axios
       .delete(
-        `http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/${_id}`
+        `https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/${_id}`
       )
       .then((res) => {
         console.log("Deleted", res);

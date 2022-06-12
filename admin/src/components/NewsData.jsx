@@ -12,7 +12,7 @@ const NewsData = () => {
   const getEmailData = async () => {
     try {
       const data = await axios({
-        url: "http://localhost:4000/api/v1/admin/dashboard/forms/newsletter-subscribers/1?quantity=1000",
+        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/newsletter-subscribers/1?quantity=1000",
         method: 'get',
         headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
