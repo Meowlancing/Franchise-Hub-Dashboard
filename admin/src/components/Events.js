@@ -5,7 +5,7 @@ import { EditOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
 import AddEvent from "./pages/AddEvent.jsx";
-import { Axios } from "axios";
+
 
 function Events() {
   // api get
@@ -28,13 +28,7 @@ function Events() {
     getEvents();
   }, []);
 
-  const id = events.map((item) => item._id);
-  // api post
-  const [isEditing, setIsEditing] = useState(false);
-  const [editingStudent, setEditingStudent] = useState(null);
-
-
-  const columns = [
+   const columns = [
     {
       key: "1",
       title: "ID",
@@ -83,94 +77,20 @@ function Events() {
     }).catch(err=> console.log(err))
   }
 
-
-
-  const onEditStudent = (record) => {
-    setIsEditing(true);
-    setEditingStudent({ ...record });
-  };
-  const resetEditing = () => {
-    setIsEditing(false);
-    setEditingStudent(null);
-  };
-
   return (
     <>
       <div className="app" style={{ display: "flex" }}>
         <div style={{ flex: "1" }}>
           <SideBar />
         </div>
-        <header className="app-header" style={{ flex: "2 -2",}}>
+        <header className="app-header" style={{ flex: "6", padding: "30px" }}>
           <a href="/addevent">
             <Button className="mb-4">
               Add a new Event
             </Button>
           </a>
-          <Table columns={columns} dataSource={events} style={{width:"85%"}}></Table>
-          <Modal
-
-            style={{width:"70vw"}}
-            title="Edit Info"
-            visible={isEditing}
-            okText="Save"
-            onCancel={() => {
-              resetEditing();
-            }}
-            // onOk={() => {
-            //   setDataSource((pre) => {
-            //     return pre.map((student) => {
-            //       if (student.id === editingStudent.id) {
-            //         return editingStudent;
-            //       } else {
-            //         return student;
-            //       }
-            //     });
-            //   });
-            //   resetEditing();
-            // }}
-          >
-            <Input
-              value={editingStudent?.event_banner}
-              onChange={(e) => {
-                setEditingStudent((pre) => {
-                  return { ...pre, event_banner: e.target.value };
-                });
-              }}
-              style={{ marginBottom: "10px" , width:"10vw" }}
-            />
-            <Input
-              value={editingStudent?.event_title}
-              onChange={(e) => {
-                setEditingStudent((pre) => {
-                  return { ...pre, event_title: e.target.value };
-                });
-              }}
-              style={{ marginBottom: "10px" , width:"10vw" }}
-            />
-            <Input
-              value={editingStudent?.event_link}
-              onChange={(e) => {
-                setEditingStudent((pre) => {
-                  return { ...pre, event_link: e.target.value };
-                });
-              }}
-              style={{ marginBottom: "10px" , width:"10vw" }}
-            />
-            {/* <Form.Group>
-              <input
-                type="file"
-                className="form-control"
-                onClick={uploadSingleFile}
-                value={editingStudent?.poster}
-                onChange={(e) => {
-                  setEditingStudent((pre) => {
-                    return { ...pre, poster: e.target.value };
-                  });
-                }}
-              />
-            </Form.Group> */}
-          </Modal>
-        </header>
+          <Table columns={columns} dataSource={events} style={{width:"85%"}}></Table>        
+       </header>
       </div>
     </>
   );

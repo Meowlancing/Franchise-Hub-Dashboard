@@ -1,12 +1,11 @@
 import "antd/dist/antd.css";
 import { Button, Table, Modal, Input, Upload, message } from "antd";
-import { useEffect, useState, } from "react";
+import { useEffect, useState } from "react";
 import { EditOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
 import AddEvent from "./pages/AddVideos.jsx";
 import { useNavigate, Link } from "react-router-dom";
-
 
 function VideoSection() {
   // api get
@@ -34,7 +33,6 @@ function VideoSection() {
   const [isEditing, setIsEditing] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
 
-
   const columns = [
     {
       key: "1",
@@ -59,18 +57,12 @@ function VideoSection() {
       render: (record) => {
         return (
           <>
-            <Link to={{
-              pathname: '/updatevideos/' + `${id}`
-            }}>
-              <EditOutlined
-                onClick={() => {
-                  onEditStudent();
-                }}
-              />
-            </Link>
-
-              <DeleteOutlined
-              onClick={(e) =>{ console.log("enough"); PostDelete(record._id,e)}}
+      
+            <DeleteOutlined
+              onClick={(e) => {
+                console.log("enough");
+                PostDelete(record._id, e);
+              }}
               style={{ color: "red", marginLeft: 10 }}
             />
             {/* <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} /> */}
@@ -80,23 +72,18 @@ function VideoSection() {
     },
   ];
 
-  const PostDelete = (_id,e) => {
+  const PostDelete = (_id, e) => {
     e.preventDefault();
-    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/${_id}`)
-    .then(res=>{
-      console.log("Deleted",res)
-    }).catch(err=> console.log(err))
-  }
-
-
-  const navigate = useNavigate();
-  const onEditStudent = () => {
-    
+    axios
+      .delete(
+        `https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/${_id}`
+      )
+      .then((res) => {
+        console.log("Deleted", res);
+      })
+      .catch((err) => console.log(err));
   };
-  const resetEditing = () => {
-    setIsEditing(false);
-    setEditingStudent(null);
-  };
+
 
   return (
     <>
@@ -106,73 +93,13 @@ function VideoSection() {
         </div>
         <header className="app-header" style={{ flex: "6", padding: "30px" }}>
           <a href="/addvideos">
-            <Button className="mb-4">
-              Add a Video
-            </Button>
+            <Button className="mb-4">Add a Video</Button>
           </a>
-          <Table columns={columns} dataSource={events} style={{width:"85%"}}></Table>
-          <Modal
-            title="Edit Info"
-            visible={isEditing}
-            okText="Save"
-            onCancel={() => {
-              resetEditing();
-            }}
-          // onOk={() => {
-          //   setDataSource((pre) => {
-          //     return pre.map((student) => {
-          //       if (student.id === editingStudent.id) {
-          //         return editingStudent;
-          //       } else {
-          //         return student;
-          //       }
-          //     });
-          //   });
-          //   resetEditing();
-          // }}
-          >
-            {/* <Input
-              value={editingStudent?.channel}
-              onChange={(e) => {
-                setEditingStudent((pre) => {
-                  return { ...pre, channel: e.target.value };
-                });
-              }}
-              style={{ marginBottom: "10px" }}
-            /> */}
-            <Input
-              value={editingStudent?.title}
-              onChange={(e) => {
-                setEditingStudent((pre) => {
-                  return { ...pre, title: e.target.value };
-                });
-              }}
-              style={{ marginBottom: "10px" , width:"10vw" }}
-            />
-            <Input
-              value={editingStudent?.thumbnail_link}
-              onChange={(e) => {
-                setEditingStudent((pre) => {
-                  return { ...pre, thumbnail_link: e.target.value };
-                });
-              }}
-              style={{ marginBottom: "10px" , width:"10vw"}}
-            />
-
-            {/* <Form.Group>
-              <input
-                type="file"
-                className="form-control"
-                onClick={uploadSingleFile}
-                value={editingStudent?.poster}
-                onChange={(e) => {
-                  setEditingStudent((pre) => {
-                    return { ...pre, poster: e.target.value };
-                  });
-                }}
-              />
-            </Form.Group> */}
-          </Modal>
+          <Table
+            columns={columns}
+            dataSource={events}
+            style={{ width: "85%" }}
+          ></Table>
         </header>
       </div>
     </>
