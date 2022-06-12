@@ -34,28 +34,27 @@ console.log(brandname);
       key: "1",
       title: "ID",
       dataIndex: "_id",
-      width: "2rem"
     },
     {
       key: "2",
       title: "Brand Name",
-      dataIndex: "content.personal_details.brand_name",
+      dataIndex: "brand_name",
     },
     {
       key: "3",
       title: "Email",
-      dataIndex: "personal_details.email_id",
+      dataIndex: "email_id",
     },
 
     {
       key: "4",
       title: "Mobile No",
-      dataIndex: "content.personal_details.mobile",
+      dataIndex: "mobile",
     },
     {
       key: "5",
       title: "Industry",
-      dataIndex: "thumbnail_link",
+      dataIndex: "industry",
     },
     {
       key: "6",
