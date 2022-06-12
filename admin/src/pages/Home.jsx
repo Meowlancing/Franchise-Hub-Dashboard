@@ -3,8 +3,20 @@ import "./styles/home.scss";
 import SideBar from "../components/SideBar"
 import { Button, Card, Form } from 'react-bootstrap';
 import axios from "axios"
+import { SettingsInputAntennaTwoTone } from '@mui/icons-material';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  let navigate = useNavigate();
+
+  let [formData, setFormData] = useState({
+    username: "",
+    password: ""
+  })
+  
+  function handleFormInput(event) {
+    setFormData({ ...formData, [event.target.name] : event.target.value });
+  }
 
   const [loginData, setLoginData] = useState({
     username: "",
@@ -16,64 +28,51 @@ const Home = () => {
       const response = await axios({
         method: "post",
         url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/login",
-        data: loginData,
+        data: formData,
       });
 
-      console.log(response.data);
+      if(response.data.success) navigate('/users');
       // return  response;
     } catch (error) {
-      console.log("error");
+      alert('Invalid credential(s)');
       return [];
     }
   }
 
-  const handleFormData = (input) => (e) => {
-    // input value from the form
-    const { value } = e.target;
-
-    //updating for data state taking previous state and then adding new value to create new object
-    setLoginData((prevState) => ({
-      ...prevState,
-      [input]: value,
-    }));
-    console.log(value);
-  };
-  console.log(loginData);
-
   return (
     <div className='home'>
-      <div className='homeContainer'>
-        <Card id="HomeCardContainer" border="danger" style={{ textAlign: "center", width: "24rem" }} className="home-card">
-          <Card.Header>
-            <Card.Title style={{ fontSize: "2rem" }}>
-              LogIn
-            </Card.Title>
-            <Card.Body>
-              <Form>
-                <Form.Group className='mb-3'>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter UserName"
-                    onChange={handleFormData("username")}
-                  />
-                </Form.Group>
-
-                <Form.Group className='mb-3'>
-                  <Form.Control
-                    type="password"
-                    placeholder="Enter Password"
-                    onChange={handleFormData("password")}
-                  />
-                </Form.Group>
-                <a href="/users">
-                  <Button variant='danger' onClick={postData}>Submit</Button>
-                </a>
-
-              </Form>
-            </Card.Body>
-          </Card.Header>
-        </Card>
-      </div>
+        <div className='homeContainer'>
+           <Card id="HomeCardContainer" border="danger" style={{textAlign: "center" , width: "24rem"}} className="home-card">
+             <Card.Header>
+               <Card.Title style={{fontSize: "2rem"}}>
+                 LogIn
+               </Card.Title>
+               <Card.Body>
+                 <Form>
+                   <Form.Group className='mb-3'>
+                     <Form.Control 
+                       type="text"
+                       name="username"
+                       placeholder="Enter UserName"
+                       onChange={handleFormInput}
+                     />
+                   </Form.Group>
+                   
+                   <Form.Group className='mb-3'>
+                     <Form.Control 
+                       name="password"
+                       type="password"
+                       placeholder="Enter Password"
+                       onChange={handleFormInput}
+                     />
+                   </Form.Group>
+                   <Button variant='danger' onClick={postData}>Submit</Button>
+                  
+                 </Form>
+               </Card.Body>
+             </Card.Header>
+           </Card>
+        </div>
     </div>
   )
 }
