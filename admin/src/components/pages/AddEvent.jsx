@@ -29,7 +29,7 @@ function AddEvent() {
     try {
       const response = await axios({
         method: "post",
-        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/new",
+        url: "http://localhost:4000/api/v1/admin/dashboard/web/events/new",
         data: form,
       });
 

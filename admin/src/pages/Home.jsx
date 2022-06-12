@@ -22,7 +22,7 @@ const Home = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/login",
+        url: "http://localhost:4000/api/v1/admin/login",
         data: formData,
       });
 

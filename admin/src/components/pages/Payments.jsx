@@ -32,7 +32,7 @@ function Payments({ nextStep, handleFormData, prevStep, values }) {
     try {
       const response = await axios({
         method: "post",
-        url: "https://franchise-hub-server.herokuapp.com/api/v1/webview/forms/franchisor-registration/new",
+        url: "http://localhost:4000/api/v1/webview/forms/franchisor-registration/new",
         data: {
           metadata:{
             is_read: false

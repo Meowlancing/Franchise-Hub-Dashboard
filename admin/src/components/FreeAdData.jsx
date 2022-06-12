@@ -11,7 +11,7 @@ export default function DataTable() {
   const getAdviceData = async () => {
     try {
       const data = await axios.get(
-        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/free-advice/all/1?quantity=1000"
+        "http://localhost:4000/api/v1/admin/dashboard/forms/free-advice/all/1?quantity=1000"
       );
       console.log(data.data.payload);
       setAdvice(data.data.payload);

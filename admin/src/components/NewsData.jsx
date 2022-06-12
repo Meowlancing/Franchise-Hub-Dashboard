@@ -10,7 +10,7 @@ const NewsData = () => {
   const getEmailData = async () => {
     try {
       const data = await axios.get(
-        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/newsletter-subscribers/1?quantity=1000"
+        "http://localhost:4000/api/v1/admin/dashboard/forms/newsletter-subscribers/1?quantity=1000"
       );
       console.log(data.data.payload);
       setEmail(data.data.payload);

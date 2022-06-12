@@ -13,7 +13,7 @@ function FranRegData() {
   const getEvents = async () => {
     try {
       const data = await axios.get(
-        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/franchisor-registration/all/1?quantity=1000"
+        "http://localhost:4000/api/v1/admin/dashboard/forms/franchisor-registration/all/1?quantity=1000"
       );
       console.log(data.data.payload);
       setEvents(data.data.payload);
@@ -88,7 +88,7 @@ console.log(brandname);
   const PostDelete = (_id, e) => {
     e.preventDefault();
     console.log(_id);
-    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/franchisor-registration/${_id}`)
+    axios.delete(`http://localhost:4000/api/v1/admin/dashboard/forms/franchisor-registration/${_id}`)
       .then(res => {
         console.log("Deleted", res)
       }).catch(err => console.log(err))

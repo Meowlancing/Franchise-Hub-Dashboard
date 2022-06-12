@@ -13,7 +13,7 @@ function VideoSection() {
   const getEvents = async () => {
     try {
       const data = await axios.get(
-        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/1?quantity=1000"
+        "http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/1?quantity=1000"
       );
       console.log(data.data.payload);
       setEvents(data.data.payload);
@@ -70,7 +70,7 @@ function VideoSection() {
     e.preventDefault();
     axios
       .delete(
-        `https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/${_id}`
+        `http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/${_id}`
       )
       .then((res) => {
         console.log("Deleted", res);

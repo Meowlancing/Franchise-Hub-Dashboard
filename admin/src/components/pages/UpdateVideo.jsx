@@ -29,7 +29,7 @@ function AddVideos() {
     try {
       const response = await axios({
         method: "post",
-        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/new",
+        url: "http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/new",
         data: form,
       });
 
