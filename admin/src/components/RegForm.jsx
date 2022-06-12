@@ -5,18 +5,19 @@ import Personal from "./pages/Personal";
 import Property from "./pages/Property";
 import Agreements from "./pages/Agreements";
 import Payments from "./pages/Payments";
-import SideBar from "./SideBar"
-import "./styles/RegForm.css"
+import SideBar from "./SideBar";
+import "./styles/RegForm.css";
 
 function Registration() {
   const [step, setstep] = useState(1);
 
   //state for form data
   const [formData, setFormData] = useState({
+    email_id: "",
+    mobile: "",
+    brand_name: "",
+    industry: "",
     personal_details: {
-      email_id: "",
-      mobile: "",
-      brand_name: "",
       company_name: "",
       owner_name: "",
       owner_email: "",
@@ -26,7 +27,6 @@ function Registration() {
       state: "",
       city: "",
       pincode: "",
-      industry: "",
       no_of_franch_outlets: "",
       inv: "",
       business_desc: "",
@@ -97,15 +97,17 @@ function Registration() {
     case 1:
       return (
         <div className="App">
-        <div className="LeftContainer"><SideBar/></div>
-         <div className="RightContainer">
-         <Container>
-            <Personal
-              nextStep={nextStep}
-              handleFormData={handleInputData}
-              values={formData}
-            />
-          </Container>
+          <div className="LeftContainer">
+            <SideBar />
+          </div>
+          <div className="RightContainer">
+            <Container>
+              <Personal
+                nextStep={nextStep}
+                handleFormData={handleInputData}
+                values={formData}
+              />
+            </Container>
           </div>
         </div>
       );
@@ -113,66 +115,73 @@ function Registration() {
     case 2:
       return (
         <div className="App">
-        <div className="LeftContainer"><SideBar/></div>
-        <div className="RightContainer">
-          <Container>
-            <Business
-              nextStep={nextStep}
-              prevStep={prevStep}
-              handleFormData={handleInputData}
-              values={formData}
-            />
-          </Container>
+          <div className="LeftContainer">
+            <SideBar />
+          </div>
+          <div className="RightContainer">
+            <Container>
+              <Business
+                nextStep={nextStep}
+                prevStep={prevStep}
+                handleFormData={handleInputData}
+                values={formData}
+              />
+            </Container>
           </div>
         </div>
       );
-   
+
     case 3:
       return (
         <div className="App">
-        <div className="LeftContainer"><SideBar/></div>
-        <div className="RightContainer">
-          <Container>
-            <Property
-              nextStep={nextStep}
-              prevStep={prevStep}
-              handleFormData={handleInputData}
-              values={formData}
-            />
-          </Container>
+          <div className="LeftContainer">
+            <SideBar />
+          </div>
+          <div className="RightContainer">
+            <Container>
+              <Property
+                nextStep={nextStep}
+                prevStep={prevStep}
+                handleFormData={handleInputData}
+                values={formData}
+              />
+            </Container>
           </div>
         </div>
       );
     case 4:
       return (
         <div className="App">
-        <div className="LeftContainer"><SideBar/></div>
-        <div className="RightContainer">
-          <Container>
-            <Agreements
-              nextStep={nextStep}
-              prevStep={prevStep}
-              handleFormData={handleInputData}
-              values={formData}
-            />
-          </Container>
+          <div className="LeftContainer">
+            <SideBar />
+          </div>
+          <div className="RightContainer">
+            <Container>
+              <Agreements
+                nextStep={nextStep}
+                prevStep={prevStep}
+                handleFormData={handleInputData}
+                values={formData}
+              />
+            </Container>
           </div>
         </div>
       );
     case 5:
       return (
         <div className="App">
-        <div className="LeftContainer"><SideBar/></div>
-        <div className="RightContainer">
-          <Container>
-            <Payments
-              nextStep={nextStep}
-              prevStep={prevStep}
-              handleFormData={handleInputData}
-              values={formData}
-              
-            />
-          </Container>
+          <div className="LeftContainer">
+            <SideBar />
+          </div>
+          <div className="RightContainer">
+            <Container>
+              <Payments
+                nextStep={nextStep}
+                prevStep={prevStep}
+                handleFormData={handleInputData}
+                values={formData}
+              />
+            </Container>
           </div>
         </div>
       );

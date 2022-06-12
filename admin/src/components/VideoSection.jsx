@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { EditOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
-import AddEvent from "./pages/AddVideos.jsx";
-import { useNavigate, Link } from "react-router-dom";
+
 
 function VideoSection() {
   // api get
@@ -27,11 +26,6 @@ function VideoSection() {
   useEffect(() => {
     getEvents();
   }, []);
-
-  const id = events.map((item) => item._id);
-  // api post
-  const [isEditing, setIsEditing] = useState(false);
-  const [editingStudent, setEditingStudent] = useState(null);
 
   const columns = [
     {
