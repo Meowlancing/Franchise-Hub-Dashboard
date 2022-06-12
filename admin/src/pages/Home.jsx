@@ -18,11 +18,6 @@ const Home = () => {
     setFormData({ ...formData, [event.target.name] : event.target.value });
   }
 
-  const [loginData, setLoginData] = useState({
-    username: "",
-    password: ""
-  })
-
   async function postData() {
     try {
       const response = await axios({
@@ -31,11 +26,14 @@ const Home = () => {
         data: formData,
       });
 
-      if(response.data.success) navigate('/users');
+      if (response.data.success) {
+        if (response.data.token)
+          localStorage.setItem('token', response.data.token)
+        navigate('/users');
+      }
       // return  response;
     } catch (error) {
       alert('Invalid credential(s)');
-      return [];
     }
   }
 
