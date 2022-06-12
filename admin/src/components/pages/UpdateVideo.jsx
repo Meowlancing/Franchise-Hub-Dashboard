@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import SideBar from '../SideBar'
 import { Button, Col, Form, Row } from "react-bootstrap"
 import axios from '../../api/axios'
+import { useNavigate } from 'react-router-dom'
 
 function AddVideos() {
+        let navigate = useNavigate();
   const [form, setForm] = useState(
     {
       thumbnail_link: "",
@@ -31,9 +33,16 @@ function AddVideos() {
         method: "post",
         url: "http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/new",
         data: form,
+        headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       });
 
       console.log(response.data);
+      if (!(response.data.success)) {
+        alert('Session timed out and your authentication token expired. Please login again.')
+        return navigate('/');
+      }
       // return  response;
     } catch (error) {
       console.log("error");

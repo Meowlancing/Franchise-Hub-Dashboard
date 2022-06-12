@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import SideBar from '../SideBar'
 import { Button, Col, Form, Row } from "react-bootstrap"
 import axios from '../../api/axios'
+import { useNavigate } from 'react-router-dom'
 
 function AddEvent() {
+  let navigate = useNavigate();
   const [form, setForm] = useState(
     {
       event_banner: "",
@@ -31,9 +33,16 @@ function AddEvent() {
         method: "post",
         url: "http://localhost:4000/api/v1/admin/dashboard/web/events/new",
         data: form,
+        headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       });
 
       console.log(response.data);
+      if (!(form.data.success)) {
+        alert('Session timed out and your authentication token expired. Please login again.')
+        return navigate('/');
+      }
       // return  response;
     } catch (error) {
       console.log("error");

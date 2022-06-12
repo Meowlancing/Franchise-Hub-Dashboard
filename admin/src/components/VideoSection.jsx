@@ -4,19 +4,29 @@ import { useEffect, useState } from "react";
 import { EditOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
 import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
+import { useNavigate } from "react-router-dom";
 
 
 function VideoSection() {
+  let navigate = useNavigate()
   // api get
   const [events, setEvents] = useState([]);
 
   const getEvents = async () => {
     try {
-      const data = await axios.get(
-        "http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/1?quantity=1000"
-      );
-      console.log(data.data.payload);
-      setEvents(data.data.payload);
+      const data = await axios({
+        method: 'get',
+        url: "http://localhost:4000/api/v1/admin/dashboard/web/trending-videos/1?quantity=1000",
+        headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+      console.log(data.data);
+      if (!(data.data.success)) {
+        alert('Session timed out and your authentication token expired. Please login again.')
+        return navigate('/');
+      }
+    setEvents(data.data.payload);
     } catch (e) {
       console.log(e);
     }

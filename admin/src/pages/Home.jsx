@@ -27,8 +27,8 @@ const Home = () => {
       });
 
       if (response.data.success) {
-        if (response.data.token)
-          localStorage.setItem('token', response.data.token)
+        if (response.data.access_token)
+          localStorage.setItem('token', response.data.access_token)
         navigate('/users');
       }
       // return  response;

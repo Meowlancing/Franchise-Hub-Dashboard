@@ -11,8 +11,10 @@ import {
 import BrandPage from "../Brandpage";
 import validator from "validator";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Payments({ nextStep, handleFormData, prevStep, values }) {
+        let navigate = useNavigate()
   const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -34,14 +36,18 @@ function Payments({ nextStep, handleFormData, prevStep, values }) {
         method: "post",
         url: "http://localhost:4000/api/v1/webview/forms/franchisor-registration/new",
         data: {
-          metadata:{
-            is_read: false
-          },
           content: values
         },
+        headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       });
 
       console.log(response.data);
+      if (!(response.data.success)) {
+        alert('Session timed out and your authentication token expired. Please login again.')
+        return navigate('/');
+      }
       // return  response;
     } catch (error) {
       console.log("error");
