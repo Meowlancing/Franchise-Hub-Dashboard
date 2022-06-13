@@ -7,7 +7,7 @@ function SideBar() {
   return (
     <div className='sidebar'>
       <div className='top'>
-        <a href="http://franchise-hub.in/"  target="_blank" style={{ textDecoration: "none" }}>
+        <a href="http://franchise-hub.in/" target="_blank" style={{ textDecoration: "none" }}>
           <span>Franchise Hub</span>
         </a>
       </div>
@@ -23,11 +23,11 @@ function SideBar() {
           <Link to="/newsletter" style={{ textDecoration: "none" }}><li><Newspaper className='icon' /><span>NewsLetter Subscribers</span></li></Link>
           <Link to="/free" style={{ textDecoration: "none" }}><li><FolderSpecial className='icon' /><span>Free Advice</span></li></Link>
 
-          <p className='title'>ADMIN ACCESS</p>
+          {/*<p className='title'>ADMIN ACCESS</p> */}
           {/* <Link to="/users/userId" style={{textDecoration:"none"}}><li><Person className='icon'/><span>Profile</span></li></Link> */}
-          <Link to="/access" style={{ textDecoration: "none" }}><li><AccessibilityNew className='icon' /><span>Change UserName</span></li></Link>
+          {/* <Link to="/access" style={{ textDecoration: "none" }}><li><AccessibilityNew className='icon' /><span>Change UserName</span></li></Link>
           <Link to="/access" style={{ textDecoration: "none" }}><li><VisibilityOff className='icon' /><span>Change Password</span></li></Link>
-          <p className='title'>User</p><li><Logout className='icon' /><span>LogOut</span></li>
+          <p className='title'>User</p><li><Logout className='icon' /><span>LogOut</span></li> */}
         </ul>
       </div>
       <div className='bottom'>
