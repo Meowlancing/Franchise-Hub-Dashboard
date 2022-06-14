@@ -12,6 +12,7 @@ import NewsLet from "./pages/NewsLet"
 import AddEvent from './components/pages/AddEvent';
 import AddVideos from './components/pages/AddVideos';
 import UpdateVideo from './components/pages/UpdateVideo';
+import InstaApply from './components/InstaApply';
 function App() {
   return (
     <div className='app'>
@@ -20,6 +21,7 @@ function App() {
        <Route path='/videos/' element={<VideoSection/>} />
        <Route path='/events/' element={<Events/>} />
        <Route path='/free/' element={<FreeAd/>} />
+       <Route path="/insta-apply" element={<InstaApply />} />
        <Route path='/newsletter/' element={<NewsLet/>} />
        <Route path='/access/' element={<Login/>} />
        <Route path='/addevent' element={<AddEvent/>} />

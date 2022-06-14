@@ -48,23 +48,23 @@ console.log(brandname);
     {
       key: "2",
       title: "Brand Name",
-      dataIndex: "brand_name",
+      dataIndex: ["content", "personal_details", "brand_name"],
     },
     {
       key: "3",
       title: "Email",
-      dataIndex: "email_id",
+      dataIndex: ["content","personal_details","email_id"],
     },
 
     {
       key: "4",
       title: "Mobile No",
-      dataIndex: "mobile",
+      dataIndex: ["content", "personal_details", "mobile"],
     },
     {
       key: "5",
       title: "Industry",
-      dataIndex: "industry",
+      dataIndex: ["content", "personal_details", "industry"],
     },
     {
       key: "6",

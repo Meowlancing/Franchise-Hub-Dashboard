@@ -22,6 +22,7 @@ function SideBar() {
           <Link to="/users/franchisor-reg" style={{ textDecoration: "none" }}><li><HowToReg className='icon' /><span>Franchisor Registration</span></li></Link>
           <Link to="/newsletter" style={{ textDecoration: "none" }}><li><Newspaper className='icon' /><span>NewsLetter Subscribers</span></li></Link>
           <Link to="/free" style={{ textDecoration: "none" }}><li><FolderSpecial className='icon' /><span>Free Advice</span></li></Link>
+          <Link to="/insta-apply" style={{ textDecoration: "none" }}><li><Lightbulb className='icon' /><span>Insta Apply</span></li></Link>
 
           {/*<p className='title'>ADMIN ACCESS</p> */}
           {/* <Link to="/users/userId" style={{textDecoration:"none"}}><li><Person className='icon'/><span>Profile</span></li></Link> */}
