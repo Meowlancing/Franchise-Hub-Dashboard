@@ -1,23 +1,34 @@
 import "antd/dist/antd.css";
-import { Button, Table, Modal, Input, Upload, message } from "antd";
+import {  Table, } from "antd";
 import { useEffect, useState } from "react";
-import { EditOutlined, DeleteOutlined, CheckOutlined } from "@ant-design/icons";
+import { DeleteOutlined} from "@ant-design/icons";
 import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
-import AddEvent from "./pages/AddEvent.jsx";
+import { useNavigate } from "react-router-dom";
 
 
 function InstaApply() {
   // api get
+  let navigate = useNavigate();
   const [events, setEvents] = useState([]);
 
   const getEvents = async () => {
     try {
-      const data = await axios.get(
-        "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/1?quantity=1000"
+      const data = await axios({
+        url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/franchisee-application/all/1?1000",
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }
+
       );
       console.log(data.data.payload);
       setEvents(data.data.payload);
+      if (!(data.data.success)) {
+        alert('Session timed out and your authentication token expired. Please login again.')
+        return navigate('/');
+      }
     } catch (e) {
       console.log(e);
     }
@@ -37,28 +48,28 @@ function InstaApply() {
     {
       key: "2",
       title: "Name",
-      dataIndex: "event_banner",
+      dataIndex: ["content","name"],
     },
     {
       key: "3",
       title: "Email",
-      dataIndex: "event_title",
+      dataIndex: ["content","email"],
     },
 
     {
       key: "4",
       title: "Mobile",
-      dataIndex: "event_link",
+      dataIndex: ["content","mobile"],
     },
 
     {
       key: "5",
       title: "Investment",
-
+      dataIndex: ["content","inv"],
     },
     {
       key: "6",
-      title:"Actions",
+      title: "Actions",
       render: (record) => {
         return (
           <>
@@ -76,7 +87,7 @@ function InstaApply() {
 
   const PostDelete = (_id, e) => {
     e.preventDefault();
-    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/${_id}`)
+    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/forms/franchisee-application/${_id}`)
       .then(res => {
         console.log("Deleted", res)
       }).catch(err => console.log(err))
