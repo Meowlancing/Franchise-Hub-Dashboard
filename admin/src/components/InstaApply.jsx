@@ -28,7 +28,7 @@ function InstaApply() {
     getEvents();
   }, []);
 
-   const columns = [
+  const columns = [
     {
       key: "1",
       title: "ID",
@@ -54,28 +54,33 @@ function InstaApply() {
     {
       key: "5",
       title: "Investment",
-    //   render: (record) => {
-    //     return (
-    //       <>
-    //         <DeleteOutlined
-    //           onClick={(e) =>{ console.log("enough"); PostDelete(record._id,e)}}
-    //           style={{ color: "red", marginLeft: 10 }}
-    //         ></DeleteOutlined>
-    //         {/* <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} /> */}
-    //       </>
-    //     );
-    //   },
-    },
-  ];
-  
 
-//   const PostDelete = (_id,e) => {
-//     e.preventDefault();
-//     axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/${_id}`)
-//     .then(res=>{
-//       console.log("Deleted",res)
-//     }).catch(err=> console.log(err))
-//   }
+    },
+    {
+      key: "6",
+      title:"Actions",
+      render: (record) => {
+        return (
+          <>
+            <DeleteOutlined
+              onClick={(e) => { console.log("enough"); PostDelete(record._id, e) }}
+              style={{ color: "red", marginLeft: 10 }}
+            ></DeleteOutlined>
+            {/* <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} /> */}
+          </>
+        );
+      },
+    }
+  ];
+
+
+  const PostDelete = (_id, e) => {
+    e.preventDefault();
+    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/${_id}`)
+      .then(res => {
+        console.log("Deleted", res)
+      }).catch(err => console.log(err))
+  }
 
   return (
     <>
@@ -84,8 +89,8 @@ function InstaApply() {
           <SideBar />
         </div>
         <header className="app-header" style={{ flex: "6", padding: "30px" }}>
-          <Table columns={columns} dataSource={events} style={{width:"85%"}}></Table>        
-       </header>
+          <Table columns={columns} dataSource={events} style={{ width: "85%" }}></Table>
+        </header>
       </div>
     </>
   );

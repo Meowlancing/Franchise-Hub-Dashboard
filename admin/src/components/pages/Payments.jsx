@@ -44,12 +44,14 @@ function Payments({ nextStep, handleFormData, prevStep, values }) {
       });
 
       console.log(response.data);
+      alert("Form submitted sucessfully!");
       if (!(response.data.success)) {
         alert('Session timed out and your authentication token expired. Please login again.')
         return navigate('/');
       }
       // return  response;
     } catch (error) {
+      alert("Oops! Something went wrong");
       console.log("error");
       return [];
     }

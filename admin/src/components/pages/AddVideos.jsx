@@ -37,7 +37,7 @@ function AddVideos() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       });
-
+      alert("Form submitted sucessfully!");
       console.log(form, response.data);
       if (!(response.data.success)) {
         alert('Session timed out and your authentication token expired. Please login again.')
@@ -45,6 +45,7 @@ function AddVideos() {
       }
       // return  response;
     } catch (error) {
+      alert("Oops! Something went wrong");
       console.log("error");
       return [];
     }
