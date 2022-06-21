@@ -6,7 +6,6 @@ import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
 import AddEvent from "./pages/AddEvent.jsx";
 
-
 function Events() {
   // api get
   const [events, setEvents] = useState([]);
@@ -28,7 +27,7 @@ function Events() {
     getEvents();
   }, []);
 
-   const columns = [
+  const columns = [
     {
       key: "1",
       title: "ID",
@@ -58,7 +57,10 @@ function Events() {
         return (
           <>
             <DeleteOutlined
-              onClick={(e) =>{ console.log("enough"); PostDelete(record._id,e)}}
+              onClick={(e) => {
+                console.log("enough");
+                PostDelete(record._id, e);
+              }}
               style={{ color: "red", marginLeft: 10 }}
             ></DeleteOutlined>
             {/* <CheckOutlined onClick={postData} style={{ marginLeft: 10 }} /> */}
@@ -67,15 +69,23 @@ function Events() {
       },
     },
   ];
-  
 
-  const PostDelete = (_id,e) => {
+  const PostDelete = (_id, e) => {
     e.preventDefault();
-    axios.delete(`https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/${_id}`)
-    .then(res=>{
-      console.log("Deleted",res)
-    }).catch(err=> console.log(err))
-  }
+    axios
+      .delete(
+        `https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/events/${_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log("Deleted", res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -85,12 +95,14 @@ function Events() {
         </div>
         <header className="app-header" style={{ flex: "6", padding: "30px" }}>
           <a href="/addevent">
-            <Button className="mb-4">
-              Add a new Event
-            </Button>
+            <Button className="mb-4">Add a new Event</Button>
           </a>
-          <Table columns={columns} dataSource={events} style={{width:"85%"}}></Table>        
-       </header>
+          <Table
+            columns={columns}
+            dataSource={events}
+            style={{ width: "85%" }}
+          ></Table>
+        </header>
       </div>
     </>
   );

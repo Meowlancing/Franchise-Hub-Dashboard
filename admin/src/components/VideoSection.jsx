@@ -6,27 +6,28 @@ import SideBar from "./SideBar.jsx";
 import axios from "../api/axios.js";
 import { useNavigate } from "react-router-dom";
 
-
 function VideoSection() {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   // api get
   const [events, setEvents] = useState([]);
 
   const getEvents = async () => {
     try {
       const data = await axios({
-        method: 'get',
+        method: "get",
         url: "https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/1?quantity=1000",
         headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-    });
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       console.log(data.data);
-      if (!(data.data.success)) {
-        alert('Session timed out and your authentication token expired. Please login again.')
-        return navigate('/');
+      if (!data.data.success) {
+        alert(
+          "Session timed out and your authentication token expired. Please login again."
+        );
+        return navigate("/");
       }
-    setEvents(data.data.payload);
+      setEvents(data.data.payload);
     } catch (e) {
       console.log(e);
     }
@@ -61,7 +62,6 @@ function VideoSection() {
       render: (record) => {
         return (
           <>
-      
             <DeleteOutlined
               onClick={(e) => {
                 console.log("enough");
@@ -80,14 +80,18 @@ function VideoSection() {
     e.preventDefault();
     axios
       .delete(
-        `https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/${_id}`
+        `https://franchise-hub-server.herokuapp.com/api/v1/admin/dashboard/web/trending-videos/${_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       )
       .then((res) => {
         console.log("Deleted", res);
       })
       .catch((err) => console.log(err));
   };
-
 
   return (
     <>
