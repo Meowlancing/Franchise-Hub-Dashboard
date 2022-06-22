@@ -2,9 +2,23 @@
   display: flex;
   .homeContainer {
     flex: 6;
-    margin: 120px 470px;
     .home-card {
       text-align: center;
     }
+    #HomeCardContainer{
+      text-align: center;
+      width: 24rem;
+    }
+  }
+}
+
+@media (min-width:768px) {
+  .homeContainer{
+    margin: 3rem 10rem;
+  }
+}
+@media (min-width:1024px) {
+  .homeContainer{
+    margin: 8rem 27rem;
   }
 }
